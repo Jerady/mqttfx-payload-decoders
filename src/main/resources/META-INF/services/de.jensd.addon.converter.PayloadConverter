@@ -1,0 +1,4 @@
+de.jensd.addon.payloadconverter.PlainTextConverter
+de.jensd.addon.payloadconverter.JsonPrettyConverter
+de.jensd.addon.payloadconverter.ThriftConverter
+

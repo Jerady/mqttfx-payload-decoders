@@ -1,0 +1,56 @@
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+
+group = 'de.jensd'
+version '0.0.1.addon'
+sourceCompatibility = '1.8'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+if (!hasProperty('mainClass')) {
+    ext.mainClass = 'de.jensd.extensions.demo.App'
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+    classifier "sources"
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourceJar {
+                classifier "sources"
+            }
+
+            artifact javadocJar {
+                classifier "javadoc"
+            }
+        }
+    }
+}
+dependencies {
+    compile 'de.jensd:addon-commons:0.0.7'
+    compile 'commons-codec:commons-codec:1.10'
+    compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+    compile 'org.apache.logging.log4j:log4j-api:2.6'
+    compile 'org.apache.logging.log4j:log4j-core:2.6'
+    compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.6'
+    testCompile 'junit:junit:4.10'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.3'
+}
