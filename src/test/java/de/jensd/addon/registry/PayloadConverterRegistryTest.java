@@ -1,7 +1,7 @@
 package de.jensd.addon.registry;
 
 import de.jensd.addon.AddOnRegistryServiceLoader;
-import de.jensd.addon.converter.PayloadConverter;
+import de.jensd.addon.payloadconverter.PayloadConverter;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -18,8 +18,8 @@ public class PayloadConverterRegistryTest {
     @Test
     public void testLoadExtensions() {
         AddOnRegistryServiceLoader extensionRegistry = new AddOnRegistryServiceLoader();
-        List<PayloadConverter> converter = extensionRegistry.getAddOns(PayloadConverter.class);
-        assertTrue(converter.size() == 3);
+        List<PayloadConverter> converters = extensionRegistry.getAddOns(PayloadConverter.class);
+        assertTrue("Expected to find 4 payload converters", converters.size() == 4);
     }
 
     @Test

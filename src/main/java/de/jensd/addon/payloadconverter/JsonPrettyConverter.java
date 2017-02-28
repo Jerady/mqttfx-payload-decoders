@@ -1,12 +1,12 @@
 package de.jensd.addon.payloadconverter;
 
-import de.jensd.addon.converter.PayloadConverter;
+import de.jensd.addon.utils.ByteArray;
 
 /**
  *
  * @author Jens Deters
  */
-public class JsonPrettyConverter implements PayloadConverter {
+public class JsonPrettyConverter  extends AbstractPayloadConverter {
 
     @Override
     public String convert(byte[] payload) {
@@ -14,8 +14,8 @@ public class JsonPrettyConverter implements PayloadConverter {
     }
 
     @Override
-    public String name() {
-        return "JsonFomatConverter";
+    public String id() {
+        return "json_pretty_format_converter";
     }
 
     @Override
@@ -24,8 +24,13 @@ public class JsonPrettyConverter implements PayloadConverter {
     }
 
     @Override
-    public String toString() {
-        return name();
+    public String description() {
+        return "Converts json payload data into a pretty readable format";
     }
-   
+
+    @Override
+    public String name() {
+        return "JSON Pretty Fomat Converter";
+    }
+
 }

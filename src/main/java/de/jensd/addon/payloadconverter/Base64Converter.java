@@ -6,16 +6,16 @@ import de.jensd.addon.utils.ByteArray;
  *
  * @author Jens Deters
  */
-public class PlainTextConverter extends AbstractPayloadConverter{
+public class Base64Converter extends AbstractPayloadConverter {
 
     @Override
     public String convert(byte[] payload) {
-        return ByteArray.asString(payload);
+        return ByteArray.asBase64(payload);
     }
 
     @Override
     public String id() {
-        return "plain_text_converter";
+        return "base64_converter";
     }
 
     @Override
@@ -25,12 +25,12 @@ public class PlainTextConverter extends AbstractPayloadConverter{
 
     @Override
     public String description() {
-        return "Converts the payload data into plain text";
+        return "Converts the payload data into base64 code";
     }
 
     @Override
     public String name() {
-        return "Plain Text Converter";
+        return "Base64 Converter";
     }
 
 }

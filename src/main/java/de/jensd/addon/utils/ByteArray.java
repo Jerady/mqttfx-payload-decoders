@@ -1,4 +1,4 @@
-package de.jensd.addon.payloadconverter;
+package de.jensd.addon.utils;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

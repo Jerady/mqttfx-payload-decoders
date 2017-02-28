@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import de.jensd.addon.converter.PayloadConverter;
+import de.jensd.addon.payloadconverter.PayloadConverter;
 
 /**
  *
@@ -21,9 +21,9 @@ public class JsonPrettyConverterTest {
         List<PayloadConverter> converters = registry.getAddOns(PayloadConverter.class);
         converters.forEach(System.out::println);
         Map<String, PayloadConverter> convertersMap = converters.stream().collect(
-                Collectors.toMap(c -> c.name(), c -> c));
-        PayloadConverter converter = convertersMap.get("JsonFomatConverter");
-        assertNotNull("JsonFomatConverter must not be null", converter);
+                Collectors.toMap(c -> c.id(), c -> c));
+        PayloadConverter converter = convertersMap.get("json_pretty_format_converter");
+        assertNotNull("JsonPrettyConverter must not be null", converter);
         String converted = converter.convert(PAYLOAD);
         String[] lines = converted.split("\r\n|\r|\n");
         assertTrue(lines.length == 11);

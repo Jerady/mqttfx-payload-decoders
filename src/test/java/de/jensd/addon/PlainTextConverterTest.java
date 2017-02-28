@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import de.jensd.addon.converter.PayloadConverter;
+import de.jensd.addon.payloadconverter.PayloadConverter;
 
 /**
  *
@@ -20,8 +20,8 @@ public class PlainTextConverterTest {
         AddOnRegistryServiceLoader registry = new AddOnRegistryServiceLoader();
         List<PayloadConverter> converters = registry.getAddOns(PayloadConverter.class);
         Map<String, PayloadConverter> convertersMap = converters.stream().collect(
-                Collectors.toMap(c -> c.name(), c -> c));
-        PayloadConverter converter = convertersMap.get("PlainTextConverter");
+                Collectors.toMap(c -> c.id(), c -> c));
+        PayloadConverter converter = convertersMap.get("plain_text_converter");
         assertNotNull("PlainTextConverter must not be null", converter);
         String converted = converter.convert(PAYLOAD);
         assertEquals(converted, CONTENT);
