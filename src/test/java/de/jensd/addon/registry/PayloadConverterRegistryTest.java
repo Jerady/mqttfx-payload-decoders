@@ -24,7 +24,7 @@ public class PayloadConverterRegistryTest {
 
     @Test
     public void testLoadExtensionsFromJar() {
-        String lookupPath = "/Users/jens/NetBeansProjects/extensions-payload-converter/build/libs/";
+        String lookupPath = "build/libs/";
         System.setProperty(AddOnRegistryServiceLoader.ADDON_LOOKUP_PATH_PROPERTY_NAME, lookupPath);
         AddOnRegistryServiceLoader extensionRegistry = new AddOnRegistryServiceLoader();
         List<PayloadConverter> converter = extensionRegistry.getAddOns(PayloadConverter.class);
