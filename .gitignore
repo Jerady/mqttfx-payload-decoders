@@ -7,3 +7,4 @@ settings.xml
 /nbproject/
 .gradle
 .nb-gradle
+/build/
