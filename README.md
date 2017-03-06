@@ -1,5 +1,6 @@
 #Add-on payload converter
 
-This project contains some MQTT message payload converter implementation to be used as add-ons for MQTT.fx.
+The preset MQTT.fx message payload converter implementation based on 
+[addon-commons](https://github.com/Jerady/addon-commons).
 
 
