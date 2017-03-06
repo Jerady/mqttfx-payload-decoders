@@ -8,7 +8,8 @@ import de.jensd.addon.AddOn;
  * 
  * @author Jens Deters
  */
-public interface PayloadConverter extends AddOn {
+public interface PayloadConverter extends AddOn, Comparable<PayloadConverter> {
+
     /**
      * Converts the given payload into a String representation.
      * 

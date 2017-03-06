@@ -28,6 +28,6 @@ public class PayloadConverterRegistryTest {
         System.setProperty(AddOnRegistryServiceLoader.ADDON_LOOKUP_PATH_PROPERTY_NAME, lookupPath);
         AddOnRegistryServiceLoader extensionRegistry = new AddOnRegistryServiceLoader();
         List<PayloadConverter> converter = extensionRegistry.getAddOns(PayloadConverter.class);
-
+        converter.forEach(System.out::println);
     }
 }

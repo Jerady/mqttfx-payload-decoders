@@ -1,10 +1,13 @@
-package de.jensd.addon.payloadconverter;
+package de.jensd.addon.payloadconverter.preset;
 
+import de.jensd.addon.payloadconverter.AbstractPayloadConverter;
 import de.jensd.addon.utils.ByteArray;
 
 /**
+ * Converts the payload data into formatted hex code
  *
  * @author Jens Deters
+ * @version 1.0.0
  */
 public class HexConverter extends AbstractPayloadConverter {
 
@@ -20,12 +23,12 @@ public class HexConverter extends AbstractPayloadConverter {
 
     @Override
     public String version() {
-        return "0.0.1";
+        return "1.0.0";
     }
 
     @Override
     public String description() {
-        return "Converts the payload data into hex code";
+        return "Converts the payload data into formatted hex code";
     }
 
     @Override

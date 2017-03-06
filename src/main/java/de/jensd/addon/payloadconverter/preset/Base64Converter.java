@@ -1,10 +1,13 @@
-package de.jensd.addon.payloadconverter;
+package de.jensd.addon.payloadconverter.preset;
 
+import de.jensd.addon.payloadconverter.AbstractPayloadConverter;
 import de.jensd.addon.utils.ByteArray;
 
 /**
- *
+ * Converts the payload data into base64 code
+ * 
  * @author Jens Deters
+ * @version 1.0.0
  */
 public class Base64Converter extends AbstractPayloadConverter {
 
@@ -20,7 +23,7 @@ public class Base64Converter extends AbstractPayloadConverter {
 
     @Override
     public String version() {
-        return "0.0.1";
+        return "1.0.0";
     }
 
     @Override
