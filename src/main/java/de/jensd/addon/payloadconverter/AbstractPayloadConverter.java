@@ -8,8 +8,7 @@ public abstract class AbstractPayloadConverter implements PayloadConverter, Comp
 
     @Override
     public String toString() {
-        return String.format("%-30s %-30s %-10s %s", id(), name(), version(), description());
-
+        return name();
     }
 
     @Override

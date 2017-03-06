@@ -28,6 +28,9 @@ public class PayloadConverterRegistryTest {
         System.setProperty(AddOnRegistryServiceLoader.ADDON_LOOKUP_PATH_PROPERTY_NAME, lookupPath);
         AddOnRegistryServiceLoader extensionRegistry = new AddOnRegistryServiceLoader();
         List<PayloadConverter> converter = extensionRegistry.getAddOns(PayloadConverter.class);
-        converter.forEach(System.out::println);
+
+        converter.forEach(c -> {
+            System.out.println(String.format("%-30s %-30s %-10s %s", c.id(), c.name(), c.version(), c.description()));
+        });
     }
 }
