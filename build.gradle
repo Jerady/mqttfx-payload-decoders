@@ -1,9 +1,10 @@
 apply plugin: 'java'
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
+apply from: 'deploy.gradle'
 
-group = 'de.jensd'
-version '1.0.0'
+version=artifactVersion
+group=artifactGroupId
 sourceCompatibility = '1.8'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
@@ -41,19 +42,20 @@ bintray {
     user = System.getenv('BINTRAY_USER')
     key = System.getenv('BINTRAY_KEY')
     pkg {
-        repo = 'maven'
-        name = 'addon-commons'
-        userOrg = 'jerady'
-        licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/Jerady/mqttfx-payload-decoders'
-        publications = ['mavenJava']
-        websiteUrl = 'https://github.com/Jerady/mqttfx-payload-decoders'
-        issueTrackerUrl = 'https://github.com/Jerady/mqttfx-payload-decoders/issues'
+        repo = "maven"
+        name = artifactId
+        userOrg = artifactUserOrg
+        publications = artifactPublications
+        issueTrackerUrl = artifactIssueTrackerUrl
+        websiteUrl = artifactSiteUrl
+        vcsUrl = artifactGitUrl
+        licenses = artifactLicenses
         publicDownloadNumbers = true
+        publish = true
         version {
-            name = '1.0.0'
-            desc = 'mqttfx-payload-decoders 1.0.0'
-            vcsTag = 'mqttfx-payload-decoders-1.0.0'
+            name = artifactVersion
+            desc =  artifactDesc
+            vcsTag = artifactVcsTag
         }
     }
 }
@@ -73,7 +75,7 @@ publishing {
     }
 }
 dependencies {
-    compile 'de.jensd:addon-commons:0.0.7'
+    compile 'de.jensd:addon-commons:1.0.0'
     compile 'commons-codec:commons-codec:1.10'
     compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
     compile 'org.apache.logging.log4j:log4j-api:2.6'

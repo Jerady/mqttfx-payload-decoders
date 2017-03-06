@@ -1,0 +1,13 @@
+ext{
+    artifactGroupId = 'de.jensd'
+    artifactId = 'mqttfx-payload-decoders'
+    artifactVersion = '1.0.0'
+    artifactSiteUrl = 'https://github.com/Jerady/mqttfx-payload-decoders'
+    artifactGitUrl = 'https://github.com/Jerady/mqttfx-payload-decoders'
+    artifactUserOrg = 'jerady'
+    artifactPublications = ['mavenJava']
+    artifactIssueTrackerUrl = 'https://github.com/Jerady/mqttfx-payload-decoders/issues'
+    artifactLicenses = ['Apache-2.0']
+    artifactDesc = '$artifactId $artifactVersion'
+    artifactVcsTag = '$artifactId-$artifactVersion'
+}
