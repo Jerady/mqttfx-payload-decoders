@@ -1,11 +1,20 @@
 apply plugin: 'java'
 apply plugin: 'maven-publish'
-
+apply plugin: 'com.jfrog.bintray'
 
 group = 'de.jensd'
 version '1.0.0'
 sourceCompatibility = '1.8'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+    }
+}
 
 if (!hasProperty('mainClass')) {
     ext.mainClass = 'de.jensd.extensions.demo.App'
@@ -14,6 +23,7 @@ if (!hasProperty('mainClass')) {
 repositories {
     mavenCentral()
     mavenLocal()
+    jcenter()
 }
 
 
@@ -25,6 +35,27 @@ task javadocJar(type: Jar) {
 task sourceJar(type: Jar) {
     from sourceSets.main.allJava
     classifier "sources"
+}
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    pkg {
+        repo = 'maven'
+        name = 'addon-commons'
+        userOrg = 'jerady'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/Jerady/mqttfx-payload-decoders'
+        publications = ['mavenJava']
+        websiteUrl = 'https://github.com/Jerady/mqttfx-payload-decoders'
+        issueTrackerUrl = 'https://github.com/Jerady/mqttfx-payload-decoders/issues'
+        publicDownloadNumbers = true
+        version {
+            name = '1.0.0'
+            desc = 'mqttfx-payload-decoders 1.0.0'
+            vcsTag = 'mqttfx-payload-decoders-1.0.0'
+        }
+    }
 }
 
 publishing {
@@ -52,5 +83,5 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.3'
+    gradleVersion = '3.4'
 }
