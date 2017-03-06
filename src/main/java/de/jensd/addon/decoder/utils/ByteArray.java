@@ -1,4 +1,4 @@
-package de.jensd.addon.utils;
+package de.jensd.addon.decoder.utils;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

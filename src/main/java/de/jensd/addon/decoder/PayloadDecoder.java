@@ -1,4 +1,4 @@
-package de.jensd.addon.payloadconverter;
+package de.jensd.addon.decoder;
 
 import de.jensd.addon.AddOn;
 
@@ -8,15 +8,15 @@ import de.jensd.addon.AddOn;
  * 
  * @author Jens Deters
  */
-public interface PayloadConverter extends AddOn, Comparable<PayloadConverter> {
+public interface PayloadDecoder extends AddOn, Comparable<PayloadDecoder> {
 
     /**
-     * Converts the given payload into a String representation.
+     * Decodes the given payload into a String representation.
      * 
      * @param payload The MQTT message payload.
      * @return The converted String representation.
      */
-    String convert(byte[] payload);
+    String decode(byte[] payload);
     /**
      * 
      * @return The converter version.

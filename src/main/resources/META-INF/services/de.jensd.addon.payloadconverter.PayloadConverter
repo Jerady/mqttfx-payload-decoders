@@ -1,5 +1,0 @@
-de.jensd.addon.payloadconverter.preset.PlainTextConverter
-de.jensd.addon.payloadconverter.preset.JsonPrettyConverter
-de.jensd.addon.payloadconverter.preset.Base64Converter
-de.jensd.addon.payloadconverter.preset.HexConverter
-

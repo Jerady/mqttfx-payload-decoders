@@ -1,7 +1,7 @@
-package de.jensd.addon.payloadconverter.preset;
+package de.jensd.addon.decoder.preset;
 
-import de.jensd.addon.payloadconverter.AbstractPayloadConverter;
-import de.jensd.addon.utils.ByteArray;
+import de.jensd.addon.decoder.AbstractPayloadDecoder;
+import de.jensd.addon.decoder.utils.ByteArray;
 
 /**
  * Converts the payload data into formatted hex code
@@ -9,16 +9,16 @@ import de.jensd.addon.utils.ByteArray;
  * @author Jens Deters
  * @version 1.0.0
  */
-public class HexConverter extends AbstractPayloadConverter {
+public class HexFormatDecoder extends AbstractPayloadDecoder {
 
     @Override
-    public String convert(byte[] payload) {
+    public String decode(byte[] payload) {
         return ByteArray.asHexFormatted(payload);
     }
 
     @Override
     public String id() {
-        return "hex_converter";
+        return "hex_format_decoder";
     }
 
     @Override

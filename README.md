@@ -1,6 +1,6 @@
-#Add-on payload converter
+#Default MQTT.fx Payload Decoders
 
-The preset MQTT.fx message payload converter implementation based on 
+The default preset of MQTT.fx message payload decoder implementations based on 
 [addon-commons](https://github.com/Jerady/addon-commons).
 
 

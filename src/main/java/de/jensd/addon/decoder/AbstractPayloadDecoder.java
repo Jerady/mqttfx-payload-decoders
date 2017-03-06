@@ -1,10 +1,10 @@
-package de.jensd.addon.payloadconverter;
+package de.jensd.addon.decoder;
 
 /**
  *
  * @author Jens Deters
  */
-public abstract class AbstractPayloadConverter implements PayloadConverter, Comparable<PayloadConverter> {
+public abstract class AbstractPayloadDecoder implements PayloadDecoder, Comparable<PayloadDecoder> {
 
     @Override
     public String toString() {
@@ -12,7 +12,7 @@ public abstract class AbstractPayloadConverter implements PayloadConverter, Comp
     }
 
     @Override
-    public int compareTo(PayloadConverter otherPayloadConverter) {
+    public int compareTo(PayloadDecoder otherPayloadConverter) {
         if (null == otherPayloadConverter) {
             return 0;
         }
