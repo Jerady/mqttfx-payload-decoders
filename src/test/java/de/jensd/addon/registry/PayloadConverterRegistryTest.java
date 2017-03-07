@@ -30,7 +30,7 @@ public class PayloadConverterRegistryTest {
         List<PayloadDecoder> converter = extensionRegistry.getAddOns(PayloadDecoder.class);
 
         converter.forEach(c -> {
-            System.out.println(String.format("%-30s %-30s %-10s %s", c.id(), c.name(), c.version(), c.description()));
+            System.out.println(String.format("%-30s %-30s %-10s %s", c.getId(), c.getName(), c.getVersion(), c.getDescription()));
         });
     }
 }

@@ -20,7 +20,7 @@ public class PlainTextDecoderTest {
         AddOnRegistryServiceLoader registry = new AddOnRegistryServiceLoader();
         List<PayloadDecoder> decoders = registry.getAddOns(PayloadDecoder.class);
         Map<String, PayloadDecoder> decodersMap = decoders.stream().collect(
-                Collectors.toMap(c -> c.id(), c -> c));
+                Collectors.toMap(c -> c.getId(), c -> c));
         PayloadDecoder decoder = decodersMap.get("plain_text_decoder");
         assertNotNull("PlainTextDecoder must not be null", decoder);
         String decoded = decoder.decode(PAYLOAD);

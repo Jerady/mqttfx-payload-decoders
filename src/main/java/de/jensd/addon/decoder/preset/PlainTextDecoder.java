@@ -12,29 +12,15 @@ import de.jensd.addon.decoder.utils.ByteArray;
  */
 public class PlainTextDecoder extends AbstractPayloadDecoder {
 
+    public PlainTextDecoder() {
+        idProperty().set("plain_text_decoder");
+        nameProperty().set("Plain Text Decoder");
+        versionProperty().set("1.0.0");
+        descriptionProperty().set("Decodes the payload data into plain text");
+    }
+
     @Override
     public String decode(byte[] payload) {
         return ByteArray.asString(payload);
     }
-
-    @Override
-    public String id() {
-        return "plain_text_decoder";
-    }
-
-    @Override
-    public String version() {
-        return "1.0.0";
-    }
-
-    @Override
-    public String description() {
-        return "Decodes the payload data into plain text";
-    }
-
-    @Override
-    public String name() {
-        return "Plain Text Decoder";
-    }
-
 }

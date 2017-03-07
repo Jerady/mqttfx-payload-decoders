@@ -20,7 +20,7 @@ public class Base64DecoderTest {
         AddOnRegistryServiceLoader registry = new AddOnRegistryServiceLoader();
         List<PayloadDecoder> decoders = registry.getAddOns(PayloadDecoder.class);
         Map<String, PayloadDecoder> decodersMap = decoders.stream().collect(
-                Collectors.toMap(c -> c.id(), c -> c));
+                Collectors.toMap(c -> c.getId(), c -> c));
         PayloadDecoder decoder = decodersMap.get("base64_decoder");
         assertNotNull("Base64Decoder must not be null", decoder);
         String decoded = decoder.decode(PAYLOAD);

@@ -21,7 +21,7 @@ public class JsonPrettyDecoderTest {
         List<PayloadDecoder> decoders = registry.getAddOns(PayloadDecoder.class);
         decoders.forEach(System.out::println);
         Map<String, PayloadDecoder> decodersMap = decoders.stream().collect(
-                Collectors.toMap(c -> c.id(), c -> c));
+                Collectors.toMap(c -> c.getId(), c -> c));
         PayloadDecoder decoder = decodersMap.get("json_pretty_format_decoder");
         assertNotNull("JsonPrettyDecoder must not be null", decoder);
         String decoded = decoder.decode(PAYLOAD);

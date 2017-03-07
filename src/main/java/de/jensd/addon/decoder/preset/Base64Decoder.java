@@ -11,29 +11,16 @@ import de.jensd.addon.decoder.utils.ByteArray;
  */
 public class Base64Decoder extends AbstractPayloadDecoder {
 
+    public Base64Decoder() {
+        idProperty().set("base64_decoder");
+        nameProperty().set("Base64 Decoder");
+        versionProperty().set("1.0.0");
+        descriptionProperty().set("Decodes the payload data into base64 endcoding");
+    }
+
     @Override
     public String decode(byte[] payload) {
         return ByteArray.asBase64(payload);
     }
-
-    @Override
-    public String id() {
-        return "base64_decoder";
-    }
-
-    @Override
-    public String version() {
-        return "1.0.0";
-    }
-
-    @Override
-    public String description() {
-        return "Decodes the payload data into base64 endcoding";
-    }
-
-    @Override
-    public String name() {
-        return "Base64 Decoder";
-    }
-
+    
 }

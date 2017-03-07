@@ -19,25 +19,25 @@ public interface PayloadDecoder extends AddOn, Comparable<PayloadDecoder> {
     String decode(byte[] payload);
     /**
      * 
-     * @return The converter version.
+     * @return The converter getVersion.
      */
-    String version();
+    String getVersion();
     
     /**
      * 
-     * @return The converter description. 
+     * @return The converter getDescription. 
      */
-    String description();
+    String getDescription();
     
     /**
      * 
-     * @return The logical name of the converter. 
+     * @return The logical getName of the converter. 
      */
-    String id();
+    String getId();
 
     /**
      * 
-     * @return The presentation name of the converter. 
+     * @return The presentation getName of the converter. 
      */
-    String name();
+    String getName();
 }

@@ -11,29 +11,16 @@ import de.jensd.addon.decoder.utils.ByteArray;
  */
 public class HexFormatDecoder extends AbstractPayloadDecoder {
 
+    public HexFormatDecoder() {
+        idProperty().set("hex_format_decoder");
+        nameProperty().set("Hex Format Decoder");
+        versionProperty().set("1.0.0");
+        descriptionProperty().set("Decodes the payload data into a hex formatted string");
+    }
+
     @Override
     public String decode(byte[] payload) {
         return ByteArray.asHexFormatted(payload);
-    }
-
-    @Override
-    public String id() {
-        return "hex_format_decoder";
-    }
-
-    @Override
-    public String version() {
-        return "1.0.0";
-    }
-
-    @Override
-    public String description() {
-        return "Converts the payload data into formatted hex code";
-    }
-
-    @Override
-    public String name() {
-        return "HEX Converter";
     }
 
 }

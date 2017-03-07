@@ -11,29 +11,16 @@ import de.jensd.addon.decoder.utils.ByteArray;
  */
 public class JsonPrettyFormatDecoder extends AbstractPayloadDecoder {
 
+      public JsonPrettyFormatDecoder() {
+        idProperty().set("json_pretty_format_decoder");
+        nameProperty().set("JSON Pretty Fomat Decoder");
+        versionProperty().set("1.0.0");
+        descriptionProperty().set("Decodes JSON payload data into a readable format");
+    }
+    
     @Override
     public String decode(byte[] payload) {
         return ByteArray.asJSONFormatted(payload);
-    }
-
-    @Override
-    public String id() {
-        return "json_pretty_format_decoder";
-    }
-
-    @Override
-    public String version() {
-        return "1.0.0";
-    }
-
-    @Override
-    public String description() {
-        return "Decodes JSON payload data into a readable format";
-    }
-
-    @Override
-    public String name() {
-        return "JSON Pretty Fomat Decoder";
     }
 
 }
