@@ -1,6 +1,5 @@
 package de.jensd.addon.decoder;
 
-import de.jensd.addon.decoder.utils.ByteArray;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
