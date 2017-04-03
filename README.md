@@ -1,6 +1,8 @@
-#Default MQTT.fx Payload Decoders
+# Default MQTT.fx Payload Decoders
 
-The default preset of MQTT.fx message payload decoder implementations based on 
+![](images/MQTTfx_icon_256.png)
+
+The default preset of [MQTT.fx](http://mqttfx.org) message payload decoder implementations based on 
 [addon-commons](https://github.com/Jerady/addon-commons).
 
 
