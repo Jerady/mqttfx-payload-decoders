@@ -1,3 +1,5 @@
+ [ ![Download](https://api.bintray.com/packages/jerady/maven/mqttfx-payload-decoders/images/download.svg) ](https://bintray.com/jerady/maven/mqttfx-payload-decoders/_latestVersion)
+ 
 # Default MQTT.fx Payload Decoders
 
 ![](images/MQTTfx_icon_256.png)
