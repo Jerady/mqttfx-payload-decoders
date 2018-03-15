@@ -2,4 +2,4 @@ de.jensd.addon.decoder.preset.PlainTextDecoder
 de.jensd.addon.decoder.preset.JsonPrettyFormatDecoder
 de.jensd.addon.decoder.preset.Base64Decoder
 de.jensd.addon.decoder.preset.HexFormatDecoder
-
+de.jensd.addon.decoder.preset.SparkplugDecoder

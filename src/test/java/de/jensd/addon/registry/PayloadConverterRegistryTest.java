@@ -35,7 +35,7 @@ public class PayloadConverterRegistryTest {
     public void testLoadExtensions() {
         AddOnRegistryServiceLoader extensionRegistry = new AddOnRegistryServiceLoader();
         List<PayloadDecoder> converters = extensionRegistry.getAddOns(PayloadDecoder.class);
-        assertTrue("Expected to find 4 payload decoders", converters.size() == 4);
+        assertTrue("Expected to find 5 payload decoders", converters.size() == 5);
     }
 
     @Test

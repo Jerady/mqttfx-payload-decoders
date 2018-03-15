@@ -31,7 +31,7 @@ public class DecoderRegistryTest {
     public void testLoadPayloadDecoders() {
         AddOnRegistryServiceLoader registry = new AddOnRegistryServiceLoader();
         List<PayloadDecoder> decoders = registry.getAddOns(PayloadDecoder.class);
-        assertTrue("Expected to find 4 payload decoders", decoders.size() == 4);
+        assertTrue("Expected to find 5 payload decoders", decoders.size() == 5);
     }
 
     
