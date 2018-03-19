@@ -25,6 +25,9 @@ repositories {
     mavenCentral()
     mavenLocal()
     jcenter()
+    maven {
+        url 'https://s3.amazonaws.com/cirrus-link-maven-repo'
+    }
 }
 
 
@@ -81,6 +84,8 @@ dependencies {
     compile 'org.apache.logging.log4j:log4j-api:2.6'
     compile 'org.apache.logging.log4j:log4j-core:2.6'
     compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.6'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.6.6'
+    compile 'com.cirruslink.sparkplug:sparkplug-java:1.1.11'
     testCompile 'junit:junit:4.10'
 }
 
