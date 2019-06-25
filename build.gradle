@@ -98,6 +98,6 @@ dependencies {
     testCompile 'junit:junit:4.10'
 }
 
-task wrapper(type: Wrapper) {
+wrapper {
     gradleVersion = '4.6'
 }
