@@ -95,6 +95,7 @@ dependencies {
     compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.6'
     compile 'com.fasterxml.jackson.core:jackson-core:2.9.4'
     compile 'com.cirruslink.sparkplug:sparkplug-java:1.1.11'
+    compile 'org.msgpack:msgpack-core:0.8.17'
     testCompile 'junit:junit:4.10'
 }
 
