@@ -1,25 +1,11 @@
-apply plugin: 'java'
-apply plugin: 'maven-publish'
-apply plugin: 'com.jfrog.bintray'
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id "com.jfrog.bintray" version "1.8.4"
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
 apply from: 'deploy.gradle'
-
-version=artifactVersion
-group=artifactGroupId
-sourceCompatibility = '1.8'
-[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
-
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
-    }
-}
-
-if (!hasProperty('mainClass')) {
-    ext.mainClass = 'de.jensd.extensions.demo.App'
-}
 
 repositories {
     mavenCentral()
@@ -30,9 +16,20 @@ repositories {
     }
 }
 
+version=artifactVersion
+group=artifactGroupId
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+if (!hasProperty('mainClass')) {
+    ext.mainClass = 'de.jensd.extensions.demo.App'
+}
+
+javafx {
+    version = "11"
+    modules = [ 'javafx.controls']
+}
 
 task javadocJar(type: Jar) {
-    classifier = 'javadoc'
     from javadoc
 }
 
@@ -78,17 +75,14 @@ publishing {
     }
 }
 dependencies {
-    compile 'de.jensd:addon-commons:1.1.0'
-    compile 'commons-codec:commons-codec:1.10'
+    compile 'de.jensd:addon-commons:11.0.2'
+    compile 'commons-codec:commons-codec:1.14'
     compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
-    compile 'org.apache.logging.log4j:log4j-api:2.6'
-    compile 'org.apache.logging.log4j:log4j-core:2.6'
-    compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.6'
+    compile 'org.apache.logging.log4j:log4j-api:2.13.0'
+    compile 'org.apache.logging.log4j:log4j-core:2.13.0'
+    compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.13.0'
     compile 'com.fasterxml.jackson.core:jackson-core:2.9.4'
     compile 'com.cirruslink.sparkplug:sparkplug-java:1.1.11'
-    testCompile 'junit:junit:4.10'
+    testCompile 'junit:junit:4.13'
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.6'
-}
