@@ -1,45 +1,30 @@
 package de.jensd.addon;
 
-import com.cirruslink.sparkplug.message.model.Metric;
-import com.cirruslink.sparkplug.message.model.MetricDataType;
-import com.cirruslink.sparkplug.message.model.SparkplugBPayload;
-import org.junit.Test;
-import de.jensd.addon.decoder.preset.SparkplugDecoder;
-import java.util.Date;
-
 import com.cirruslink.sparkplug.SparkplugException;
 import com.cirruslink.sparkplug.SparkplugInvalidTypeException;
 import com.cirruslink.sparkplug.message.SparkplugBPayloadEncoder;
-import com.cirruslink.sparkplug.message.model.*;
+import com.cirruslink.sparkplug.message.model.DataSet;
 import com.cirruslink.sparkplug.message.model.DataSet.DataSetBuilder;
+import com.cirruslink.sparkplug.message.model.*;
 import com.cirruslink.sparkplug.message.model.Metric.MetricBuilder;
+import com.cirruslink.sparkplug.message.model.PropertySet.PropertySetBuilder;
+import com.cirruslink.sparkplug.message.model.Row.RowBuilder;
+import com.cirruslink.sparkplug.message.model.Template;
+import com.cirruslink.sparkplug.message.model.SparkplugBPayload.SparkplugBPayloadBuilder;
+import com.cirruslink.sparkplug.message.model.Template.TemplateBuilder;
+import de.jensd.addon.decoder.preset.SparkplugDecoder;
+import org.junit.Test;
+
+import java.lang.String;
+import java.math.BigInteger;
+import java.util.*;
+
 import static com.cirruslink.sparkplug.message.model.MetricDataType.Boolean;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.DataSet;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.DateTime;
 import static com.cirruslink.sparkplug.message.model.MetricDataType.Double;
 import static com.cirruslink.sparkplug.message.model.MetricDataType.Float;
 import static com.cirruslink.sparkplug.message.model.MetricDataType.String;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.Int16;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.Int32;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.Int64;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.Int8;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.Template;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.Text;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.UInt16;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.UInt32;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.UInt64;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.UInt8;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.UUID;
-import com.cirruslink.sparkplug.message.model.PropertySet.PropertySetBuilder;
-import com.cirruslink.sparkplug.message.model.SparkplugBPayload.SparkplugBPayloadBuilder;
-import com.cirruslink.sparkplug.message.model.Row.RowBuilder;
-import com.cirruslink.sparkplug.message.model.Template.TemplateBuilder;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import static com.cirruslink.sparkplug.message.model.MetricDataType.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  *
@@ -58,11 +43,10 @@ public class SparkplugDecoderTest {
         SparkplugBPayloadBuilder payload = new SparkplugBPayloadBuilder().setTimestamp(new Date());
         payload = addBdSeqNum(payload);
         byte[] payloadBytes = new SparkplugBPayloadEncoder().getBytes(payload.createPayload());
-
         SparkplugDecoder sparkplugDecoder = new SparkplugDecoder();
         String decoded = sparkplugDecoder.decode(payloadBytes);
-
         System.out.println(decoded);
+        assertTrue("Expected decodes String is not empty", !decoded.isEmpty());
     }
 
     @Test
@@ -102,12 +86,11 @@ public class SparkplugDecoderTest {
                 .createMetric());
         
         byte[] payloadBytes = new SparkplugBPayloadEncoder().getBytes(payload);
-        
         SparkplugDecoder sparkplugDecoder = new SparkplugDecoder();
         String decoded = sparkplugDecoder.decode(payloadBytes);
-
         System.out.println(decoded);
-        
+        assertTrue("Expected decodes String is not empty", !decoded.isEmpty());
+
     }
 
     private String createUUID() {

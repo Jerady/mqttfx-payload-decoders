@@ -19,6 +19,8 @@ package de.jensd.addon.decoder;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.util.Objects;
+
 /**
  *
  * @author Jens Deters
@@ -90,5 +92,20 @@ public abstract class AbstractPayloadDecoder implements PayloadDecoder, Comparab
         }
         return getName().compareTo(otherPayloadConverter.getName());
     }
-    
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AbstractPayloadDecoder that = (AbstractPayloadDecoder) o;
+        return Objects.equals(id, that.id) &&
+            Objects.equals(name, that.name) &&
+            Objects.equals(version, that.version) &&
+            Objects.equals(description, that.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, version, description);
+    }
 }

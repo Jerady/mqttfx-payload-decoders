@@ -17,7 +17,8 @@
 package de.jensd.addon.decoder.utils;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.Hex;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -28,8 +29,10 @@ import org.codehaus.jackson.map.ObjectMapper;
  */
 public class ByteArray {
 
+    private ByteArray(){}
+
     public static String asString(byte[] payload) {
-        return new String(payload, Charset.forName("UTF-8"));
+        return new String(payload, StandardCharsets.UTF_8);
     }
 
     public static String asHex(byte[] payload) {

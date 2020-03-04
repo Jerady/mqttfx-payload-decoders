@@ -43,10 +43,10 @@ public class PayloadConverterRegistryTest {
         String lookupPath = "build/libs/";
         System.setProperty(AddOnRegistryServiceLoader.ADDON_LOOKUP_PATH_PROPERTY_NAME, lookupPath);
         AddOnRegistryServiceLoader extensionRegistry = new AddOnRegistryServiceLoader();
-        List<PayloadDecoder> converter = extensionRegistry.getAddOns(PayloadDecoder.class);
-
-        converter.forEach(c -> {
+        List<PayloadDecoder> converters = extensionRegistry.getAddOns(PayloadDecoder.class);
+        converters.forEach(c -> {
             System.out.println(String.format("%-30s %-30s %-10s %s", c.getId(), c.getName(), c.getVersion(), c.getDescription()));
         });
+        assertTrue("Expected to find 5 payload decoders", converters.size() == 5);
     }
 }

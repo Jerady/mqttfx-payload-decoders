@@ -40,7 +40,7 @@ public class Base64DecoderTest {
         PayloadDecoder decoder = decodersMap.get("base64_decoder");
         assertNotNull("Base64Decoder must not be null", decoder);
         String decoded = decoder.decode(PAYLOAD);
-        assertEquals(decoded, "SGVsbG8gV29ybGQ=");
+        assertEquals("SGVsbG8gV29ybGQ=", decoded);
     }
 
 }

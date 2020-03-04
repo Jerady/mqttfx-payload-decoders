@@ -40,7 +40,7 @@ public class HexFormatDecoderTest {
         PayloadDecoder decoder = decodersMap.get("hex_format_decoder");
         assertNotNull("HexFormatDecoder must not be null", decoder);
         String decoded = decoder.decode(PAYLOAD);
-        assertEquals(decoded, "4865 6C6C 6F20 576F 726C 64");
+        assertEquals("4865 6C6C 6F20 576F 726C 64",decoded);
     }
 
 }
