@@ -18,6 +18,7 @@ package de.jensd.addon.decoder.preset;
 
 import de.jensd.addon.decoder.AbstractPayloadDecoder;
 import de.jensd.addon.decoder.utils.ByteArray;
+import de.jensd.addon.decoder.utils.ContentType;
 
 /**
  * Decodes the payload data into base64 code
@@ -32,6 +33,7 @@ public class Base64Decoder extends AbstractPayloadDecoder {
         nameProperty().set("Base64 Decoder");
         versionProperty().set("1.0.0");
         descriptionProperty().set("Decodes the payload data into base64 endcoding");
+        contentTypeProperty().set(ContentType.BASE64.getMimeType());
     }
 
     @Override

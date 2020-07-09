@@ -16,6 +16,7 @@
  */
 package de.jensd.addon.decoder;
 
+import de.jensd.addon.decoder.utils.ContentType;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -31,6 +32,7 @@ public abstract class AbstractPayloadDecoder implements PayloadDecoder, Comparab
     private StringProperty name;
     private StringProperty version;
     private StringProperty description;
+    private StringProperty contentType;
 
     public final StringProperty idProperty() {
         if (id == null) {
@@ -78,6 +80,18 @@ public abstract class AbstractPayloadDecoder implements PayloadDecoder, Comparab
     @Override
     public String getDescription() {
         return descriptionProperty().get();
+    }
+
+    protected final StringProperty contentTypeProperty() {
+        if (contentType == null) {
+            contentType = new SimpleStringProperty(ContentType.PLAIN_TEXT.getMimeType());
+        }
+        return contentType;
+    }
+
+    @Override
+    public String getContentType() {
+        return contentTypeProperty().get();
     }
 
     @Override

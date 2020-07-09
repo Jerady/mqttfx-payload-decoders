@@ -33,6 +33,14 @@ public interface PayloadDecoder extends AddOn, Comparable<PayloadDecoder> {
      * @return The converted String representation.
      */
     String decode(byte[] payload);
+
+    /**
+     *
+     * @return The content type (MIME-Type) of the message payload.
+     */
+    String getContentType();
+
+
     /**
      * 
      * @return The converter getVersion.
