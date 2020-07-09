@@ -13,6 +13,7 @@ import com.cirruslink.sparkplug.message.model.Template;
 import com.cirruslink.sparkplug.message.model.SparkplugBPayload.SparkplugBPayloadBuilder;
 import com.cirruslink.sparkplug.message.model.Template.TemplateBuilder;
 import de.jensd.addon.decoder.preset.SparkplugDecoder;
+import de.jensd.addon.decoder.utils.ContentType;
 import org.junit.Test;
 
 import java.lang.String;
@@ -24,6 +25,7 @@ import static com.cirruslink.sparkplug.message.model.MetricDataType.Double;
 import static com.cirruslink.sparkplug.message.model.MetricDataType.Float;
 import static com.cirruslink.sparkplug.message.model.MetricDataType.String;
 import static com.cirruslink.sparkplug.message.model.MetricDataType.*;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -47,6 +49,9 @@ public class SparkplugDecoderTest {
         String decoded = sparkplugDecoder.decode(payloadBytes);
         System.out.println(decoded);
         assertTrue("Expected decodes String is not empty", !decoded.isEmpty());
+
+        String contentType = sparkplugDecoder.getContentType();
+        assertEquals(ContentType.SPARKPLUG.getMimeType(), contentType);
     }
 
     @Test

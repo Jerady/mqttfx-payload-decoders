@@ -19,6 +19,8 @@ package de.jensd.addon;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import de.jensd.addon.decoder.utils.ContentType;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import de.jensd.addon.decoder.PayloadDecoder;
@@ -41,6 +43,13 @@ public class Base64DecoderTest {
         assertNotNull("Base64Decoder must not be null", decoder);
         String decoded = decoder.decode(PAYLOAD);
         assertEquals("SGVsbG8gV29ybGQ=", decoded);
+
+        String contentType = decoder.getContentType();
+        assertEquals(ContentType.BASE64.getMimeType(), contentType);
+
     }
+
+
+
 
 }

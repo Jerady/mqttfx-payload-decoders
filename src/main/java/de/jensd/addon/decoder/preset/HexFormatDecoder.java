@@ -18,6 +18,7 @@ package de.jensd.addon.decoder.preset;
 
 import de.jensd.addon.decoder.AbstractPayloadDecoder;
 import de.jensd.addon.decoder.utils.ByteArray;
+import de.jensd.addon.decoder.utils.ContentType;
 
 /**
  * Converts the payload data into formatted hex code
@@ -32,6 +33,7 @@ public class HexFormatDecoder extends AbstractPayloadDecoder {
         nameProperty().set("Hex Format Decoder");
         versionProperty().set("1.0.0");
         descriptionProperty().set("Decodes the payload data into a hex formatted string");
+        contentTypeProperty().set(ContentType.HEX.getMimeType());
     }
 
     @Override

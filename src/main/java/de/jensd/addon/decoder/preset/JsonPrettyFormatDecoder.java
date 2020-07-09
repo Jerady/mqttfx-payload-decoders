@@ -18,6 +18,7 @@ package de.jensd.addon.decoder.preset;
 
 import de.jensd.addon.decoder.AbstractPayloadDecoder;
 import de.jensd.addon.decoder.utils.ByteArray;
+import de.jensd.addon.decoder.utils.ContentType;
 
 /**
  * Decodes JSON payload data into a readable format
@@ -32,6 +33,7 @@ public class JsonPrettyFormatDecoder extends AbstractPayloadDecoder {
         nameProperty().set("JSON Pretty Fomat Decoder");
         versionProperty().set("1.0.0");
         descriptionProperty().set("Decodes JSON payload data into a readable format");
+        contentTypeProperty().set(ContentType.JSON.getMimeType());
     }
     
     @Override

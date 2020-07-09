@@ -18,6 +18,7 @@ package de.jensd.addon.decoder.preset;
 
 import de.jensd.addon.decoder.AbstractPayloadDecoder;
 import de.jensd.addon.decoder.utils.ByteArray;
+import de.jensd.addon.decoder.utils.ContentType;
 
 /**
  *
@@ -33,6 +34,7 @@ public class PlainTextDecoder extends AbstractPayloadDecoder {
         nameProperty().set("Plain Text Decoder");
         versionProperty().set("1.0.0");
         descriptionProperty().set("Decodes the payload data into plain text");
+        contentTypeProperty().set(ContentType.PLAIN_TEXT.getMimeType());
     }
 
     @Override

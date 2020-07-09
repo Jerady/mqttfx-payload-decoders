@@ -19,6 +19,8 @@ package de.jensd.addon;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import de.jensd.addon.decoder.utils.ContentType;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import de.jensd.addon.decoder.PayloadDecoder;
@@ -41,6 +43,9 @@ public class HexFormatDecoderTest {
         assertNotNull("HexFormatDecoder must not be null", decoder);
         String decoded = decoder.decode(PAYLOAD);
         assertEquals("4865 6C6C 6F20 576F 726C 64",decoded);
+
+        String contentType = decoder.getContentType();
+        assertEquals(ContentType.HEX.getMimeType(), contentType);
     }
 
 }

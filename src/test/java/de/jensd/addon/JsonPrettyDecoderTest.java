@@ -19,6 +19,8 @@ package de.jensd.addon;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import de.jensd.addon.decoder.utils.ContentType;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import de.jensd.addon.decoder.PayloadDecoder;
@@ -43,6 +45,9 @@ public class JsonPrettyDecoderTest {
         String decoded = decoder.decode(PAYLOAD);
         String[] lines = decoded.split("\r\n|\r|\n");
         assertTrue(lines.length == 11);
+
+        String contentType = decoder.getContentType();
+        assertEquals(ContentType.JSON.getMimeType(), contentType);
     }
 
 }
