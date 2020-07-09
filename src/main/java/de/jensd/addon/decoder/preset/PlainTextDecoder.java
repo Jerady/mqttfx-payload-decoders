@@ -32,7 +32,7 @@ public class PlainTextDecoder extends AbstractPayloadDecoder {
     public PlainTextDecoder() {
         idProperty().set("plain_text_decoder");
         nameProperty().set("Plain Text Decoder");
-        versionProperty().set("1.0.0");
+        versionProperty().set("1.1.0");
         descriptionProperty().set("Decodes the payload data into plain text");
         contentTypeProperty().set(ContentType.PLAIN_TEXT.getMimeType());
     }

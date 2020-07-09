@@ -31,7 +31,7 @@ public class Base64Decoder extends AbstractPayloadDecoder {
     public Base64Decoder() {
         idProperty().set("base64_decoder");
         nameProperty().set("Base64 Decoder");
-        versionProperty().set("1.0.0");
+        versionProperty().set("1.1.0");
         descriptionProperty().set("Decodes the payload data into base64 endcoding");
         contentTypeProperty().set(ContentType.BASE64.getMimeType());
     }
