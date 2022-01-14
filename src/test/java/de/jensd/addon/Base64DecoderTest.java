@@ -21,18 +21,18 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import de.jensd.addon.decoder.utils.ContentType;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import de.jensd.addon.decoder.PayloadDecoder;
 
 /**
  *
  * @author Jens Deters
  */
-public class Base64DecoderTest {
+class Base64DecoderTest {
 
     @Test
-    public void testBase64Decoder() {
+    void testBase64Decoder() {
         final String CONTENT = "Hello World";
         final byte[] PAYLOAD = CONTENT.getBytes();
         AddOnRegistryServiceLoader registry = new AddOnRegistryServiceLoader();
@@ -40,7 +40,7 @@ public class Base64DecoderTest {
         Map<String, PayloadDecoder> decodersMap = decoders.stream().collect(
                 Collectors.toMap(c -> c.getId(), c -> c));
         PayloadDecoder decoder = decodersMap.get("base64_decoder");
-        assertNotNull("Base64Decoder must not be null", decoder);
+        assertNotNull(decoder, "Base64Decoder must not be null");
         String decoded = decoder.decode(PAYLOAD);
         assertEquals("SGVsbG8gV29ybGQ=", decoded);
 

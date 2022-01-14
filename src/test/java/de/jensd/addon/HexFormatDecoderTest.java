@@ -21,18 +21,18 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import de.jensd.addon.decoder.utils.ContentType;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import de.jensd.addon.decoder.PayloadDecoder;
 
 /**
  *
  * @author Jens Deters
  */
-public class HexFormatDecoderTest {
+class HexFormatDecoderTest {
 
     @Test
-    public void testHexFormatDecoder() {
+    void testHexFormatDecoder() {
         final String CONTENT = "Hello World";
         final byte[] PAYLOAD = CONTENT.getBytes();
         AddOnRegistryServiceLoader registry = new AddOnRegistryServiceLoader();
@@ -40,7 +40,7 @@ public class HexFormatDecoderTest {
         Map<String, PayloadDecoder> decodersMap = decoders.stream().collect(
                 Collectors.toMap(c -> c.getId(), c -> c));
         PayloadDecoder decoder = decodersMap.get("hex_format_decoder");
-        assertNotNull("HexFormatDecoder must not be null", decoder);
+        assertNotNull(decoder, "HexFormatDecoder must not be null");
         String decoded = decoder.decode(PAYLOAD);
         assertEquals("4865 6C6C 6F20 576F 726C 64",decoded);
 

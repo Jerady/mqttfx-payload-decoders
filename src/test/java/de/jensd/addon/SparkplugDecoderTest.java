@@ -14,7 +14,6 @@ import com.cirruslink.sparkplug.message.model.SparkplugBPayload.SparkplugBPayloa
 import com.cirruslink.sparkplug.message.model.Template.TemplateBuilder;
 import de.jensd.addon.decoder.preset.SparkplugDecoder;
 import de.jensd.addon.decoder.utils.ContentType;
-import org.junit.Test;
 
 import java.lang.String;
 import java.math.BigInteger;
@@ -25,14 +24,14 @@ import static com.cirruslink.sparkplug.message.model.MetricDataType.Double;
 import static com.cirruslink.sparkplug.message.model.MetricDataType.Float;
 import static com.cirruslink.sparkplug.message.model.MetricDataType.String;
 import static com.cirruslink.sparkplug.message.model.MetricDataType.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
  * @author Jens Deters
  */
-public class SparkplugDecoderTest {
+class SparkplugDecoderTest {
 
     private static final String HW_VERSION = "Emulated Hardware";
     private static final String SW_VERSION = "v1.0.0";
@@ -41,21 +40,21 @@ public class SparkplugDecoderTest {
     private int seq = 0;
 
     @Test
-    public void testSparkplugDecoderWithDeathPayload() throws Exception {
+    void testSparkplugDecoderWithDeathPayload() throws Exception {
         SparkplugBPayloadBuilder payload = new SparkplugBPayloadBuilder().setTimestamp(new Date());
         payload = addBdSeqNum(payload);
         byte[] payloadBytes = new SparkplugBPayloadEncoder().getBytes(payload.createPayload());
         SparkplugDecoder sparkplugDecoder = new SparkplugDecoder();
         String decoded = sparkplugDecoder.decode(payloadBytes);
         System.out.println(decoded);
-        assertTrue("Expected decodes String is not empty", !decoded.isEmpty());
+        assertFalse(decoded.isEmpty(), "Expected decodes String is not empty");
 
         String contentType = sparkplugDecoder.getContentType();
         assertEquals(ContentType.SPARKPLUG.getMimeType(), contentType);
     }
 
     @Test
-    public void testSparkplugDecoderDeviceBirthPayload() throws SparkplugException, Exception {
+    void testSparkplugDecoderDeviceBirthPayload() throws Exception {
         // Create the payload and add some metrics
         SparkplugBPayload payload = new SparkplugBPayload(
                 new Date(),
@@ -94,7 +93,7 @@ public class SparkplugDecoderTest {
         SparkplugDecoder sparkplugDecoder = new SparkplugDecoder();
         String decoded = sparkplugDecoder.decode(payloadBytes);
         System.out.println(decoded);
-        assertTrue("Expected decodes String is not empty", !decoded.isEmpty());
+        assertFalse(decoded.isEmpty(), "Expected decodes String is not empty" );
 
     }
 
@@ -116,7 +115,7 @@ public class SparkplugDecoderTest {
     }
 
     // Used to add the sequence number
-    private long getSeqNum() throws Exception {
+    private long getSeqNum() {
         if (seq == 256) {
             seq = 0;
         }
@@ -263,7 +262,7 @@ public class SparkplugDecoderTest {
 
     }
 
-    private Template createTemplate(boolean isDef, String templatRef) throws SparkplugException {
+    private Template createTemplate(boolean isDef, String templateRef) throws SparkplugException {
         Random random = new Random();
         List<Metric> metrics = new ArrayList<>();
         metrics.add(new MetricBuilder("MyInt8", Int8, (byte) random.nextInt()).createMetric());
@@ -284,7 +283,7 @@ public class SparkplugDecoderTest {
 
         return new TemplateBuilder()
                 .version("v1.0")
-                .templateRef(templatRef)
+                .templateRef(templateRef)
                 .definition(isDef)
                 .addParameters(createParams())
                 .addMetrics(metrics)

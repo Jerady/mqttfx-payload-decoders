@@ -1,8 +1,7 @@
 plugins {
     id 'java'
     id 'maven-publish'
-    id "com.jfrog.bintray" version "1.8.4"
-    id 'org.openjfx.javafxplugin' version '0.0.8'
+    id 'org.openjfx.javafxplugin' version '0.0.10'
 }
 
 apply from: 'deploy.gradle'
@@ -10,14 +9,11 @@ apply from: 'deploy.gradle'
 repositories {
     mavenCentral()
     mavenLocal()
-    jcenter()
     maven {
         url 'https://s3.amazonaws.com/cirrus-link-maven-repo'
     }
 }
 
-version=artifactVersion
-group=artifactGroupId
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 if (!hasProperty('mainClass')) {
@@ -25,7 +21,7 @@ if (!hasProperty('mainClass')) {
 }
 
 javafx {
-    version = "11"
+    version = "16"
     modules = [ 'javafx.controls']
 }
 
@@ -38,36 +34,15 @@ task sourceJar(type: Jar) {
     classifier "sources"
 }
 
-bintray {
-    user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_KEY')
-    pkg {
-        repo = "maven"
-        name = artifactId
-        userOrg = artifactUserOrg
-        publications = artifactPublications
-        issueTrackerUrl = artifactIssueTrackerUrl
-        websiteUrl = artifactSiteUrl
-        vcsUrl = artifactGitUrl
-        licenses = artifactLicenses
-        publicDownloadNumbers = true
-        publish = true
-        version {
-            name = artifactVersion
-            desc =  artifactDesc
-            vcsTag = artifactVcsTag
-        }
-    }
-}
-
 publishing {
     publications {
         mavenJava(MavenPublication) {
+            groupId = artifactGroupId
+            version = artifactVersion
             from components.java
             artifact sourceJar {
                 classifier "sources"
             }
-
             artifact javadocJar {
                 classifier "javadoc"
             }
@@ -75,14 +50,12 @@ publishing {
     }
 }
 dependencies {
-    compile 'de.jensd:addon-commons:11.0.2'
-    compile 'commons-codec:commons-codec:1.14'
-    compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
-    compile 'org.apache.logging.log4j:log4j-api:2.13.0'
-    compile 'org.apache.logging.log4j:log4j-core:2.13.0'
-    compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.13.0'
-    compile 'com.fasterxml.jackson.core:jackson-core:2.9.4'
-    compile 'com.cirruslink.sparkplug:sparkplug-java:1.1.11'
-    testCompile 'junit:junit:4.13'
+    implementation 'de.jensd:addon-commons:16.0.0'
+    implementation 'commons-codec:commons-codec:1.15'
+    implementation 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.13.1'
+    implementation 'com.cirruslink.sparkplug:sparkplug-java:1.1.11'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 }
 
