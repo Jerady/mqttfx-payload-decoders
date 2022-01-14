@@ -19,7 +19,7 @@ public class SparkplugDecoder extends AbstractPayloadDecoder {
 	public SparkplugDecoder() {
 		idProperty().set("sparkplug_decoder");
 		nameProperty().set("Sparkplug Decoder");
-		versionProperty().set("1.0.0");
+		versionProperty().set("1.1.0");
 		descriptionProperty().set("Decodes the binary Sparkplug payload data into a JSON representation");
 		contentTypeProperty().set(ContentType.SPARKPLUG.getMimeType());
 	}
