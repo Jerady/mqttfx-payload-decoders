@@ -14,11 +14,11 @@ import de.jensd.addon.decoder.AbstractPayloadDecoder;
 import de.jensd.addon.decoder.utils.ContentType;
 import de.jensd.addon.decoder.utils.Formatter;
 
-public class SparkplugDecoderPrettyFormat extends AbstractPayloadDecoder {
+public class SparkplugPrettyFormatDecoder extends AbstractPayloadDecoder {
 
-	public SparkplugDecoderPrettyFormat() {
+	public SparkplugPrettyFormatDecoder() {
 		idProperty().set("sparkplug_decoder_pretty_format");
-		nameProperty().set("Sparkplug Decoder (JSON formatter)");
+		nameProperty().set("Sparkplug Pretty Format Decoder");
 		versionProperty().set("1.1.0");
 		descriptionProperty().set("Decodes the binary Sparkplug payload data into a formatted JSON representation");
 		contentTypeProperty().set(ContentType.SPARKPLUG.getMimeType());
