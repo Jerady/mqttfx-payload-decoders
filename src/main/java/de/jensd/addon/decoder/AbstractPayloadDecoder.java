@@ -22,9 +22,10 @@ import javafx.beans.property.StringProperty;
 
 import java.util.Objects;
 
+
 /**
  *
- * @author Jens Deters
+ * @author Jens Deters (jens.deters@softblade.de)
  */
 public abstract class AbstractPayloadDecoder implements PayloadDecoder, Comparable<PayloadDecoder> {
 

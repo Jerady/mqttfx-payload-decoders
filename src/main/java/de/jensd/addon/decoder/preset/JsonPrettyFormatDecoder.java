@@ -24,7 +24,7 @@ import de.jensd.addon.decoder.utils.ContentType;
  * Decodes JSON payload data into a readable format
  *
  * @author Jens Deters
- * @version 1.0.0
+ * @version 1.1.0
  */
 public class JsonPrettyFormatDecoder extends AbstractPayloadDecoder {
 

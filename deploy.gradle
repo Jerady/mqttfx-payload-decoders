@@ -1,7 +1,7 @@
 ext{
     artifactGroupId = 'de.jensd'
     artifactId = 'mqttfx-payload-decoders'
-    artifactVersion = '16.0.0'
+    artifactVersion = '17.0.0'
     artifactSiteUrl = 'https://github.com/Jerady/mqttfx-payload-decoders'
     artifactGitUrl = 'https://github.com/Jerady/mqttfx-payload-decoders'
     artifactUserOrg = 'jerady'

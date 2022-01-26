@@ -25,7 +25,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 /**
  *
- * @author Jens Deters (jens.deters@codecentric.de)
+ * @author Jens Deters (jens.deters@softblade.de)
  */
 public class ByteArray {
 
