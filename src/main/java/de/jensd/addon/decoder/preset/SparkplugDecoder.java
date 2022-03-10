@@ -31,7 +31,6 @@ public class SparkplugDecoder extends AbstractPayloadDecoder {
 			SparkplugBPayload sparkplugPayload = decoder.buildFromByteArray(payload);
 			return PayloadUtil.toJsonString(sparkplugPayload);
 		} catch(Exception e) {
-			e.printStackTrace();
 			return "Failed to parse the payload";
 		}
 	}

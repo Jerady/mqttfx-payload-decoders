@@ -31,7 +31,6 @@ public class SparkplugPrettyFormatDecoder extends AbstractPayloadDecoder {
 			SparkplugBPayload sparkplugPayload = decoder.buildFromByteArray(payload);
 			return Formatter.asJSONFormatted(PayloadUtil.toJsonString(sparkplugPayload));
 		} catch(Exception e) {
-			e.printStackTrace();
 			return "Failed to parse the payload";
 		}
 	}

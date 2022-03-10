@@ -72,7 +72,8 @@ public class MsgPackDecoder extends AbstractPayloadDecoder {
                 sb.append("]");
                 break;
             default:
-                throw new IllegalStateException("Unexpected value: " + unpacker.getNextFormat().getValueType());
+                String s = "Unexpected value: " + unpacker.getNextFormat().getValueType();
+                sb.append(s);
         }
     }
 
@@ -89,7 +90,7 @@ public class MsgPackDecoder extends AbstractPayloadDecoder {
             StringBuilder sb = new StringBuilder();
             readUnpacker(unpacker, sb);
             return sb.toString();
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             return "*** PAYLOAD IS NOT VALID MSGPACK DATA *** \n\n" + ex.getMessage();
         }
     }
