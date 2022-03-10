@@ -19,18 +19,20 @@ package de.jensd.addon;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import org.junit.Test;
-import static org.junit.Assert.*;
+
+import de.jensd.addon.decoder.utils.ContentType;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import de.jensd.addon.decoder.PayloadDecoder;
 
 /**
  *
  * @author Jens Deters
  */
-public class JsonPrettyDecoderTest {
+class JsonPrettyDecoderTest {
 
     @Test
-    public void testJsonFormatDecoder() {
+    void testJsonFormatDecoder() {
         final String CONTENT = "[0,{\"1\":{\"2\":{\"3\":{\"4\":[5,{\"6\":7}]}}}}]";
         final byte[] PAYLOAD = CONTENT.getBytes();
         AddOnRegistryServiceLoader registry = new AddOnRegistryServiceLoader();
@@ -39,10 +41,13 @@ public class JsonPrettyDecoderTest {
         Map<String, PayloadDecoder> decodersMap = decoders.stream().collect(
                 Collectors.toMap(c -> c.getId(), c -> c));
         PayloadDecoder decoder = decodersMap.get("json_pretty_format_decoder");
-        assertNotNull("JsonPrettyDecoder must not be null", decoder);
+        assertNotNull(decoder, "JsonPrettyDecoder must not be null");
         String decoded = decoder.decode(PAYLOAD);
         String[] lines = decoded.split("\r\n|\r|\n");
-        assertTrue(lines.length == 11);
+        assertEquals(11, lines.length);
+
+        String contentType = decoder.getContentType();
+        assertEquals(ContentType.JSON.getMimeType(), contentType);
     }
 
 }

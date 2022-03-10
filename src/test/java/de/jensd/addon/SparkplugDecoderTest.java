@@ -1,51 +1,37 @@
 package de.jensd.addon;
 
-import com.cirruslink.sparkplug.message.model.Metric;
-import com.cirruslink.sparkplug.message.model.MetricDataType;
-import com.cirruslink.sparkplug.message.model.SparkplugBPayload;
-import org.junit.Test;
-import de.jensd.addon.decoder.preset.SparkplugDecoder;
-import java.util.Date;
-
 import com.cirruslink.sparkplug.SparkplugException;
 import com.cirruslink.sparkplug.SparkplugInvalidTypeException;
 import com.cirruslink.sparkplug.message.SparkplugBPayloadEncoder;
-import com.cirruslink.sparkplug.message.model.*;
+import com.cirruslink.sparkplug.message.model.DataSet;
 import com.cirruslink.sparkplug.message.model.DataSet.DataSetBuilder;
+import com.cirruslink.sparkplug.message.model.*;
 import com.cirruslink.sparkplug.message.model.Metric.MetricBuilder;
+import com.cirruslink.sparkplug.message.model.PropertySet.PropertySetBuilder;
+import com.cirruslink.sparkplug.message.model.Row.RowBuilder;
+import com.cirruslink.sparkplug.message.model.Template;
+import com.cirruslink.sparkplug.message.model.SparkplugBPayload.SparkplugBPayloadBuilder;
+import com.cirruslink.sparkplug.message.model.Template.TemplateBuilder;
+import de.jensd.addon.decoder.preset.SparkplugDecoder;
+import de.jensd.addon.decoder.utils.ContentType;
+
+import java.lang.String;
+import java.math.BigInteger;
+import java.util.*;
+
 import static com.cirruslink.sparkplug.message.model.MetricDataType.Boolean;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.DataSet;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.DateTime;
 import static com.cirruslink.sparkplug.message.model.MetricDataType.Double;
 import static com.cirruslink.sparkplug.message.model.MetricDataType.Float;
 import static com.cirruslink.sparkplug.message.model.MetricDataType.String;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.Int16;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.Int32;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.Int64;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.Int8;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.Template;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.Text;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.UInt16;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.UInt32;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.UInt64;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.UInt8;
-import static com.cirruslink.sparkplug.message.model.MetricDataType.UUID;
-import com.cirruslink.sparkplug.message.model.PropertySet.PropertySetBuilder;
-import com.cirruslink.sparkplug.message.model.SparkplugBPayload.SparkplugBPayloadBuilder;
-import com.cirruslink.sparkplug.message.model.Row.RowBuilder;
-import com.cirruslink.sparkplug.message.model.Template.TemplateBuilder;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import static com.cirruslink.sparkplug.message.model.MetricDataType.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
  * @author Jens Deters
  */
-public class SparkplugDecoderTest {
+class SparkplugDecoderTest {
 
     private static final String HW_VERSION = "Emulated Hardware";
     private static final String SW_VERSION = "v1.0.0";
@@ -54,19 +40,21 @@ public class SparkplugDecoderTest {
     private int seq = 0;
 
     @Test
-    public void testSparkplugDecoderWithDeathPayload() throws Exception {
+    void testSparkplugDecoderWithDeathPayload() throws Exception {
         SparkplugBPayloadBuilder payload = new SparkplugBPayloadBuilder().setTimestamp(new Date());
         payload = addBdSeqNum(payload);
         byte[] payloadBytes = new SparkplugBPayloadEncoder().getBytes(payload.createPayload());
-
         SparkplugDecoder sparkplugDecoder = new SparkplugDecoder();
         String decoded = sparkplugDecoder.decode(payloadBytes);
-
         System.out.println(decoded);
+        assertFalse(decoded.isEmpty(), "Expected decodes String is not empty");
+
+        String contentType = sparkplugDecoder.getContentType();
+        assertEquals(ContentType.SPARKPLUG.getMimeType(), contentType);
     }
 
     @Test
-    public void testSparkplugDecoderDeviceBirthPayload() throws SparkplugException, Exception {
+    void testSparkplugDecoderDeviceBirthPayload() throws Exception {
         // Create the payload and add some metrics
         SparkplugBPayload payload = new SparkplugBPayload(
                 new Date(),
@@ -102,12 +90,11 @@ public class SparkplugDecoderTest {
                 .createMetric());
         
         byte[] payloadBytes = new SparkplugBPayloadEncoder().getBytes(payload);
-        
         SparkplugDecoder sparkplugDecoder = new SparkplugDecoder();
         String decoded = sparkplugDecoder.decode(payloadBytes);
-
         System.out.println(decoded);
-        
+        assertFalse(decoded.isEmpty(), "Expected decodes String is not empty" );
+
     }
 
     private String createUUID() {
@@ -128,7 +115,7 @@ public class SparkplugDecoderTest {
     }
 
     // Used to add the sequence number
-    private long getSeqNum() throws Exception {
+    private long getSeqNum() {
         if (seq == 256) {
             seq = 0;
         }
@@ -275,7 +262,7 @@ public class SparkplugDecoderTest {
 
     }
 
-    private Template createTemplate(boolean isDef, String templatRef) throws SparkplugException {
+    private Template createTemplate(boolean isDef, String templateRef) throws SparkplugException {
         Random random = new Random();
         List<Metric> metrics = new ArrayList<>();
         metrics.add(new MetricBuilder("MyInt8", Int8, (byte) random.nextInt()).createMetric());
@@ -296,7 +283,7 @@ public class SparkplugDecoderTest {
 
         return new TemplateBuilder()
                 .version("v1.0")
-                .templateRef(templatRef)
+                .templateRef(templateRef)
                 .definition(isDef)
                 .addParameters(createParams())
                 .addMetrics(metrics)

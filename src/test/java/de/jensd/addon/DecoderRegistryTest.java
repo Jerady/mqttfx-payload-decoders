@@ -17,21 +17,21 @@
 package de.jensd.addon;
 
 import java.util.List;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import de.jensd.addon.decoder.PayloadDecoder;
 
 /**
  *
  * @author Jens Deters
  */
-public class DecoderRegistryTest {
+class DecoderRegistryTest {
 
     @Test
-    public void testLoadPayloadDecoders() {
+    void testLoadPayloadDecoders() {
         AddOnRegistryServiceLoader registry = new AddOnRegistryServiceLoader();
         List<PayloadDecoder> decoders = registry.getAddOns(PayloadDecoder.class);
-        assertTrue("Expected to find 5 payload decoders", decoders.size() == 5);
+        assertEquals( "Expected to find 5 payload decoders", decoders.size() == 5);
     }
 
     

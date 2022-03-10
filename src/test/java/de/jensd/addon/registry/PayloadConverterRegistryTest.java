@@ -18,35 +18,35 @@ package de.jensd.addon.registry;
 
 import de.jensd.addon.AddOnRegistryServiceLoader;
 import java.util.List;
-import org.junit.Test;
-import static org.junit.Assert.*;
 import de.jensd.addon.decoder.PayloadDecoder;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
  * @author Jens Deters
  */
-public class PayloadConverterRegistryTest {
+class PayloadConverterRegistryTest {
 
     public PayloadConverterRegistryTest() {
     }
 
     @Test
-    public void testLoadExtensions() {
+    void testLoadExtensions() {
         AddOnRegistryServiceLoader extensionRegistry = new AddOnRegistryServiceLoader();
         List<PayloadDecoder> converters = extensionRegistry.getAddOns(PayloadDecoder.class);
-        assertTrue("Expected to find 5 payload decoders", converters.size() == 5);
+        assertEquals(converters.size() == 5, "Expected to find 5 payload decoders");
     }
 
     @Test
-    public void testLoadExtensionsFromJar() {
+    void testLoadExtensionsFromJar() {
         String lookupPath = "build/libs/";
         System.setProperty(AddOnRegistryServiceLoader.ADDON_LOOKUP_PATH_PROPERTY_NAME, lookupPath);
         AddOnRegistryServiceLoader extensionRegistry = new AddOnRegistryServiceLoader();
-        List<PayloadDecoder> converter = extensionRegistry.getAddOns(PayloadDecoder.class);
-
-        converter.forEach(c -> {
+        List<PayloadDecoder> converters = extensionRegistry.getAddOns(PayloadDecoder.class);
+        converters.forEach(c -> {
             System.out.println(String.format("%-30s %-30s %-10s %s", c.getId(), c.getName(), c.getVersion(), c.getDescription()));
         });
+        assertEquals( "Expected to find 5 payload decoders", converters.size() == 5);
     }
 }

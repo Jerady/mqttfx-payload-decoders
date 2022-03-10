@@ -16,8 +16,11 @@
  */
 package de.jensd.addon.decoder;
 
+import de.jensd.addon.decoder.utils.ContentType;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+
+import java.util.Objects;
 
 /**
  *
@@ -29,6 +32,7 @@ public abstract class AbstractPayloadDecoder implements PayloadDecoder, Comparab
     private StringProperty name;
     private StringProperty version;
     private StringProperty description;
+    private StringProperty contentType;
 
     public final StringProperty idProperty() {
         if (id == null) {
@@ -78,6 +82,18 @@ public abstract class AbstractPayloadDecoder implements PayloadDecoder, Comparab
         return descriptionProperty().get();
     }
 
+    protected final StringProperty contentTypeProperty() {
+        if (contentType == null) {
+            contentType = new SimpleStringProperty(ContentType.PLAIN_TEXT.getMimeType());
+        }
+        return contentType;
+    }
+
+    @Override
+    public String getContentType() {
+        return contentTypeProperty().get();
+    }
+
     @Override
     public String toString() {
         return getName();
@@ -90,5 +106,20 @@ public abstract class AbstractPayloadDecoder implements PayloadDecoder, Comparab
         }
         return getName().compareTo(otherPayloadConverter.getName());
     }
-    
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AbstractPayloadDecoder that = (AbstractPayloadDecoder) o;
+        return Objects.equals(id, that.id) &&
+            Objects.equals(name, that.name) &&
+            Objects.equals(version, that.version) &&
+            Objects.equals(description, that.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, version, description);
+    }
 }
