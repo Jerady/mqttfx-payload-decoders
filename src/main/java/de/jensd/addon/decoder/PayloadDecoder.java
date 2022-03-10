@@ -22,7 +22,7 @@ import de.jensd.addon.AddOn;
  * A MQTT.fx payload converter.
  * 
  * 
- * @author Jens Deters
+ * @author Jens Deters (jens.deters@softblade.de)
  */
 public interface PayloadDecoder extends AddOn, Comparable<PayloadDecoder> {
 
