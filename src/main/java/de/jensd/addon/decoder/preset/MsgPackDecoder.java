@@ -19,11 +19,9 @@ package de.jensd.addon.decoder.preset;
 import java.io.IOException;
 
 import de.jensd.addon.decoder.AbstractPayloadDecoder;
-import de.jensd.addon.decoder.utils.ByteArray;
 
 import org.msgpack.core.MessagePack;
 import org.msgpack.core.MessageUnpacker;
-import org.msgpack.value.ValueType;
 
 /**
  *
@@ -38,10 +36,10 @@ public class MsgPackDecoder extends AbstractPayloadDecoder {
         idProperty().set("msgpack_decoder");
         nameProperty().set("Msgpack Decoder");
         versionProperty().set("1.0.0");
-        descriptionProperty().set("Decodes the payload data into plain text");
+        descriptionProperty().set("Decodes the MessagePack (msgpack.org) payload data into plain text");
     }
 
-    private void unpackOne(MessageUnpacker unpacker, StringBuffer sb) throws IOException {
+    private void unpackOne(MessageUnpacker unpacker, StringBuilder sb) throws IOException {
         int length;
         switch (unpacker.getNextFormat().getValueType()) {
             case INTEGER:
@@ -73,10 +71,12 @@ public class MsgPackDecoder extends AbstractPayloadDecoder {
                 }
                 sb.append("]");
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + unpacker.getNextFormat().getValueType());
         }
     }
 
-    private void readUnpacker(MessageUnpacker unpacker, StringBuffer sb) throws IOException {
+    private void readUnpacker(MessageUnpacker unpacker, StringBuilder sb) throws IOException {
         while (unpacker.hasNext()) {
             unpackOne(unpacker, sb);
         }
@@ -86,7 +86,7 @@ public class MsgPackDecoder extends AbstractPayloadDecoder {
     public String decode(byte[] payload) {
         try {
             MessageUnpacker unpacker = MessagePack.newDefaultUnpacker(payload);
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             readUnpacker(unpacker, sb);
             return sb.toString();
         } catch (IOException ex) {
