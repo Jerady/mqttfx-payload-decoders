@@ -25,7 +25,7 @@ import de.jensd.addon.decoder.utils.ContentType;
  * Decodes the payload data into plain text
  *
  * @author Jens Deters
- * @version 1.0.0
+ * @version 1.1.0
  */
 public class PlainTextDecoder extends AbstractPayloadDecoder {
 
