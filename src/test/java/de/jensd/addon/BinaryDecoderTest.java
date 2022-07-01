@@ -16,39 +16,37 @@
  */
 package de.jensd.addon;
 
-import java.util.ArrayList;
+import de.jensd.addon.decoder.PayloadDecoder;
+import de.jensd.addon.decoder.utils.ContentType;
+import org.junit.jupiter.api.Test;
+
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-import de.jensd.addon.decoder.utils.ContentType;
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import de.jensd.addon.decoder.PayloadDecoder;
 
 /**
  *
  * @author Jens Deters
  */
-class HexFormatDecoderTest {
+class BinaryDecoderTest {
 
     @Test
-    void testHexFormatDecoder() {
-        final String CONTENT = "the quick brown fox jumps over the lazy dog";
+    void testBinaryDecoder() {
+        final String CONTENT = "Hello World";
         final byte[] PAYLOAD = CONTENT.getBytes();
         AddOnRegistryServiceLoader registry = new AddOnRegistryServiceLoader();
         List<PayloadDecoder> decoders = registry.getAddOns(PayloadDecoder.class);
         Map<String, PayloadDecoder> decodersMap = decoders.stream().collect(
                 Collectors.toMap(c -> c.getId(), c -> c));
-        PayloadDecoder decoder = decodersMap.get("hex_format_decoder");
-        assertNotNull(decoder, "HexFormatDecoder must not be null");
+        PayloadDecoder decoder = decodersMap.get("binary_decoder");
+        assertNotNull(decoder, "BinaryDecoder must not be null");
         String decoded = decoder.decode(PAYLOAD);
-        System.out.println(decoded);
-        assertEquals("74 68 65 20 71 75 69 63 6B 20 62 72 6F 77 6E 20 66 6F 78 20 6A 75 6D 70 73 20 6F 76 65 72 20 74 68 65 20 6C 61 7A 79 20 64 6F 67 ",decoded);
+        assertEquals("0100100001100101011011000110110001101111001000000101011101101111011100100110110001100100",decoded);
 
         String contentType = decoder.getContentType();
-        assertEquals(ContentType.HEX.getMimeType(), contentType);
+        assertEquals(ContentType.BINARY.getMimeType(), contentType);
     }
 
 }

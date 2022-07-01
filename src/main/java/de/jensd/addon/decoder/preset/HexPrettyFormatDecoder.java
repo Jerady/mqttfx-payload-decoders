@@ -21,24 +21,24 @@ import de.jensd.addon.decoder.utils.ByteArray;
 import de.jensd.addon.decoder.utils.ContentType;
 
 /**
- *
- * Decodes the payload data into plain text
+ * Converts the payload data into formatted hex code
  *
  * @author Jens Deters
  * @version 1.1.0
  */
-public class PlainTextDecoder extends AbstractPayloadDecoder {
+public class HexPrettyFormatDecoder extends AbstractPayloadDecoder {
 
-    public PlainTextDecoder() {
-        idProperty().set("plain_text_decoder");
-        nameProperty().set("Plain Text Decoder");
+    public HexPrettyFormatDecoder() {
+        idProperty().set("hex_pretty_format_decoder");
+        nameProperty().set("Hex Pretty Format Decoder");
         versionProperty().set("1.1.0");
-        descriptionProperty().set("Decodes the payload data into plain text.");
-        contentTypeProperty().set(ContentType.PLAIN_TEXT.getMimeType());
+        descriptionProperty().set("Decodes the payload data into a hex readable formatted string.");
+        contentTypeProperty().set(ContentType.HEX.getMimeType());
     }
 
     @Override
     public String decode(byte[] payload) {
-        return ByteArray.asString(payload);
+        return ByteArray.asHexPrettyFormatted(payload);
     }
+
 }

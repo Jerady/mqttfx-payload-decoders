@@ -18,9 +18,9 @@ public class SparkplugPrettyFormatDecoder extends AbstractPayloadDecoder {
 
 	public SparkplugPrettyFormatDecoder() {
 		idProperty().set("sparkplug_decoder_pretty_format");
-		nameProperty().set("Sparkplug Pretty Format Decoder");
+		nameProperty().set("Sparkplug Pretty Format Decoder (Cirrus Link)");
 		versionProperty().set("1.1.0");
-		descriptionProperty().set("Decodes the binary Sparkplug payload data into a formatted JSON representation");
+		descriptionProperty().set("Decodes the binary Sparkplug payload data into a formatted JSON representation.");
 		contentTypeProperty().set(ContentType.SPARKPLUG.getMimeType());
 	}
 
