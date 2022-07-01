@@ -36,7 +36,7 @@ public class MsgPackDecoder extends AbstractPayloadDecoder {
         idProperty().set("msgpack_decoder");
         nameProperty().set("Msgpack Decoder");
         versionProperty().set("1.0.0");
-        descriptionProperty().set("Decodes the MessagePack (msgpack.org) payload data into plain text");
+        descriptionProperty().set("Decodes the MessagePack (msgpack.org) payload data into plain text.");
     }
 
     private void unpackOne(MessageUnpacker unpacker, StringBuilder sb) throws IOException {
@@ -86,9 +86,11 @@ public class MsgPackDecoder extends AbstractPayloadDecoder {
     @Override
     public String decode(byte[] payload) {
         try {
-            MessageUnpacker unpacker = MessagePack.newDefaultUnpacker(payload);
-            StringBuilder sb = new StringBuilder();
-            readUnpacker(unpacker, sb);
+            StringBuilder sb;
+            try (MessageUnpacker unpacker = MessagePack.newDefaultUnpacker(payload)) {
+                sb = new StringBuilder();
+                readUnpacker(unpacker, sb);
+            }
             return sb.toString();
         } catch (Exception ex) {
             return "*** PAYLOAD IS NOT VALID MSGPACK DATA *** \n\n" + ex.getMessage();

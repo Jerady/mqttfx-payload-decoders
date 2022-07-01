@@ -53,7 +53,12 @@ wrapper {
     gradleVersion = '4.6'
 }
 
+test {
+    useJUnitPlatform()
+}
+
 dependencies {
+    implementation files('lib/tahu-core-0.5.15.jar')
     implementation 'de.jensd:addon-commons:16.0.0'
     implementation 'commons-codec:commons-codec:1.15'
     implementation 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'

@@ -6,21 +6,20 @@
  */
 package de.jensd.addon.decoder.preset;
 
-import com.cirruslink.sparkplug.message.PayloadDecoder;
-import com.cirruslink.sparkplug.message.SparkplugBPayloadDecoder;
-import com.cirruslink.sparkplug.message.model.SparkplugBPayload;
-import com.cirruslink.sparkplug.util.PayloadUtil;
+import org.eclipse.tahu.message.PayloadDecoder;
 import de.jensd.addon.decoder.AbstractPayloadDecoder;
 import de.jensd.addon.decoder.utils.ContentType;
-import de.jensd.addon.decoder.utils.Formatter;
+import org.eclipse.tahu.message.SparkplugBPayloadDecoder;
+import org.eclipse.tahu.message.model.SparkplugBPayload;
+import org.eclipse.tahu.util.PayloadUtil;
 
-public class SparkplugPrettyFormatDecoder extends AbstractPayloadDecoder {
+public class SparkplugTahuDecoder extends AbstractPayloadDecoder {
 
-	public SparkplugPrettyFormatDecoder() {
-		idProperty().set("sparkplug_decoder_pretty_format");
-		nameProperty().set("Sparkplug Pretty Format Decoder (Cirrus Link)");
+	public SparkplugTahuDecoder() {
+		idProperty().set("sparkplug_tahu_decoder");
+		nameProperty().set("Sparkplug Decoder (Eclipse Tahu)");
 		versionProperty().set("1.1.0");
-		descriptionProperty().set("Decodes the binary Sparkplug payload data into a formatted JSON representation.");
+		descriptionProperty().set("Decodes the binary Sparkplug payload data into a JSON representation.");
 		contentTypeProperty().set(ContentType.SPARKPLUG.getMimeType());
 	}
 
@@ -29,7 +28,7 @@ public class SparkplugPrettyFormatDecoder extends AbstractPayloadDecoder {
 		try {
 			PayloadDecoder<SparkplugBPayload> decoder = new SparkplugBPayloadDecoder();
 			SparkplugBPayload sparkplugPayload = decoder.buildFromByteArray(payload);
-			return Formatter.asJSONFormatted(PayloadUtil.toJsonString(sparkplugPayload));
+			return PayloadUtil.toJsonString(sparkplugPayload);
 		} catch(Exception e) {
 			return "Failed to parse the payload";
 		}
