@@ -8,14 +8,14 @@ The default preset of [MQTT.fx](http://mqttfx.org) message payload decoder imple
 ## Available Decoders
 
 | Name          | Classname     | Version | Pupose|
-| :------------- |:-------------| :-----: | :----- |
-| Plain Text Decoder     | ```de.jensd.addon.decoder.preset.PlainTextDecoder``` | 1.1.0 | Decodes the payload data into plain text |
-| Base64 Decoder        | ```de.jensd.addon.decoder.preset.Base64Decoder``` | 1.1.0 | Decodes the payload data into base64 endcoding |
-| JSON Pretty Format Decoder     | ```de.jensd.addon.decoder.preset.JsonPrettyFormatDecoder``` | 1.1.0 | Decodes JSON payload data into a readable format|
-| Hex Format Decoder    | ```de.jensd.addon.decoder.preset.HexFormatDecoder``` | 1.1.0 |Decodes the payload data into a hex formatted string |
-| Sparkplug Decoder     | ```de.jensd.addon.decoder.preset.SparkplugDecoder``` | 1.1.0 | Decodes the binary Sparkplug payload data into a JSON representation |
-| Sparkplug Pretty Format Decoder     | ```de.jensd.addon.decoder.preset.SparkplugPrettyFormatDecoder``` | 1.1.0 | Decodes the binary Sparkplug payload data into a formatted JSON representation |
-| MsgPack Decoder | ```de.jensd.addon.decoder.preset.MsgPackDecoder``` | 1.1.0 | Decodes the msgpack payload data into plain text |
+| :------------- |:-------------|:-------:| :----- |
+| Plain Text Decoder     | ```de.jensd.addon.decoder.preset.PlainTextDecoder``` |  1.2.0  | Decodes the payload data into plain text |
+| Base64 Decoder        | ```de.jensd.addon.decoder.preset.Base64Decoder``` |  1.2.0  | Decodes the payload data into base64 endcoding |
+| JSON Pretty Format Decoder     | ```de.jensd.addon.decoder.preset.JsonPrettyFormatDecoder``` |  1.2.0  | Decodes JSON payload data into a readable format|
+| Hex Format Decoder    | ```de.jensd.addon.decoder.preset.HexFormatDecoder``` |  1.2.0  |Decodes the payload data into a hex formatted string |
+| Sparkplug Decoder     | ```de.jensd.addon.decoder.preset.SparkplugDecoder``` |  1.2.0  | Decodes the binary Sparkplug payload data into a JSON representation |
+| Sparkplug Pretty Format Decoder     | ```de.jensd.addon.decoder.preset.SparkplugPrettyFormatDecoder``` |  1.2.0  | Decodes the binary Sparkplug payload data into a formatted JSON representation |
+| MsgPack Decoder | ```de.jensd.addon.decoder.preset.MsgPackDecoder``` |  1.2.0  | Decodes the msgpack payload data into plain text |
 
 ## Sparkplug Decoder
 

@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'maven-publish'
-    id 'org.openjfx.javafxplugin' version '0.0.12'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
 }
 
 apply from: 'deploy.gradle'
@@ -58,14 +58,13 @@ test {
 }
 
 dependencies {
-    implementation files('lib/tahu-core-0.5.15.jar')
     implementation 'de.jensd:addon-commons:16.0.0'
     implementation 'commons-codec:commons-codec:1.15'
     implementation 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.13.2'
-    implementation 'com.cirruslink.sparkplug:sparkplug-java:1.1.11'
-    implementation 'org.msgpack:msgpack-core:0.9.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.13.4'
+    implementation 'org.eclipse.tahu:tahu-core:1.0.0'
+    implementation 'org.msgpack:msgpack-core:0.9.4'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
 }
 

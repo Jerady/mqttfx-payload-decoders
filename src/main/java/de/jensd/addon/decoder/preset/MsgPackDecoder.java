@@ -35,7 +35,7 @@ public class MsgPackDecoder extends AbstractPayloadDecoder {
     public MsgPackDecoder() {
         idProperty().set("msgpack_decoder");
         nameProperty().set("Msgpack Decoder");
-        versionProperty().set("1.0.0");
+        versionProperty().set("1.2.0");
         descriptionProperty().set("Decodes the MessagePack (msgpack.org) payload data into plain text.");
     }
 
