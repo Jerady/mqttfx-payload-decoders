@@ -9,9 +9,6 @@ apply from: 'deploy.gradle'
 repositories {
     mavenCentral()
     mavenLocal()
-    maven {
-        url 'https://s3.amazonaws.com/cirrus-link-maven-repo'
-    }
 }
 
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
@@ -21,7 +18,7 @@ if (!hasProperty('mainClass')) {
 }
 
 javafx {
-    version = "16"
+    version = "17"
     modules = [ 'javafx.controls', 'javafx.base' ]
 }
 
@@ -58,11 +55,10 @@ test {
 }
 
 dependencies {
+    implementation 'org.eclipse.tahu:tahu-core:1.0.0'
     implementation 'de.jensd:addon-commons:16.0.0'
     implementation 'commons-codec:commons-codec:1.15'
-    implementation 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.13.4'
-    implementation 'org.eclipse.tahu:tahu-core:1.0.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.19.0'
     implementation 'org.msgpack:msgpack-core:0.9.4'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
