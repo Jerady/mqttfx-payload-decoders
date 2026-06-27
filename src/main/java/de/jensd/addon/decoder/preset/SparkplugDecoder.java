@@ -6,20 +6,19 @@
  */
 package de.jensd.addon.decoder.preset;
 
-import com.cirruslink.sparkplug.message.PayloadDecoder;
-import com.cirruslink.sparkplug.message.SparkplugBPayloadDecoder;
-import com.cirruslink.sparkplug.message.model.SparkplugBPayload;
-import com.cirruslink.sparkplug.util.PayloadUtil;
-
 import de.jensd.addon.decoder.AbstractPayloadDecoder;
 import de.jensd.addon.decoder.utils.ContentType;
+import org.eclipse.tahu.message.PayloadDecoder;
+import org.eclipse.tahu.message.SparkplugBPayloadDecoder;
+import org.eclipse.tahu.message.model.SparkplugBPayload;
+import org.eclipse.tahu.util.PayloadUtil;
 
 public class SparkplugDecoder extends AbstractPayloadDecoder {
 
 	public SparkplugDecoder() {
 		idProperty().set("sparkplug_decoder");
 		nameProperty().set("Sparkplug Decoder (CirrusLink)");
-		versionProperty().set("1.1.0");
+		versionProperty().set("1.2.0");
 		descriptionProperty().set("Decodes the binary Sparkplug payload data into a JSON representation.");
 		contentTypeProperty().set(ContentType.SPARKPLUG.getMimeType());
 	}

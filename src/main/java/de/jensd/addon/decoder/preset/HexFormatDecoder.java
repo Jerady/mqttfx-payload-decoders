@@ -31,7 +31,7 @@ public class HexFormatDecoder extends AbstractPayloadDecoder {
     public HexFormatDecoder() {
         idProperty().set("hex_format_decoder");
         nameProperty().set("Hex Format Decoder");
-        versionProperty().set("1.1.0");
+        versionProperty().set("1.2.0");
         descriptionProperty().set("Decodes the payload data into a hex formatted string.");
         contentTypeProperty().set(ContentType.HEX.getMimeType());
     }

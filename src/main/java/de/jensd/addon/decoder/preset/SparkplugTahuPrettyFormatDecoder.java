@@ -19,7 +19,7 @@ public class SparkplugTahuPrettyFormatDecoder extends AbstractPayloadDecoder {
 	public SparkplugTahuPrettyFormatDecoder() {
 		idProperty().set("sparkplug_tahu_decoder_pretty_format");
 		nameProperty().set("Sparkplug Pretty Format Decoder (Eclipse Tahu)");
-		versionProperty().set("1.1.0");
+		versionProperty().set("1.2.0");
 		descriptionProperty().set("Decodes the binary Sparkplug payload data into a JSON representation.");
 		contentTypeProperty().set(ContentType.SPARKPLUG.getMimeType());
 	}
