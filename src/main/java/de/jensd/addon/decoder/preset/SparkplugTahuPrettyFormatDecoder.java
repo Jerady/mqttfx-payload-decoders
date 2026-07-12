@@ -12,6 +12,7 @@ import de.jensd.addon.decoder.utils.Formatter;
 import org.eclipse.tahu.message.PayloadDecoder;
 import org.eclipse.tahu.message.SparkplugBPayloadDecoder;
 import org.eclipse.tahu.message.model.SparkplugBPayload;
+import org.eclipse.tahu.model.MetricDataTypeMap;
 import org.eclipse.tahu.util.PayloadUtil;
 
 public class SparkplugTahuPrettyFormatDecoder extends AbstractPayloadDecoder {
@@ -28,7 +29,7 @@ public class SparkplugTahuPrettyFormatDecoder extends AbstractPayloadDecoder {
 	public String decode(byte[] payload) {
 		try {
 			PayloadDecoder<SparkplugBPayload> decoder = new SparkplugBPayloadDecoder();
-			SparkplugBPayload sparkplugPayload = decoder.buildFromByteArray(payload);
+			SparkplugBPayload sparkplugPayload = decoder.buildFromByteArray(payload, new MetricDataTypeMap());
 			return Formatter.asJSONFormatted(PayloadUtil.toJsonString(sparkplugPayload));
 		} catch(Exception e) {
 			return "Failed to parse the payload";
