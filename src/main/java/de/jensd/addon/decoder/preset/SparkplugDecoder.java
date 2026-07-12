@@ -11,6 +11,7 @@ import de.jensd.addon.decoder.utils.ContentType;
 import org.eclipse.tahu.message.PayloadDecoder;
 import org.eclipse.tahu.message.SparkplugBPayloadDecoder;
 import org.eclipse.tahu.message.model.SparkplugBPayload;
+import org.eclipse.tahu.model.MetricDataTypeMap;
 import org.eclipse.tahu.util.PayloadUtil;
 
 public class SparkplugDecoder extends AbstractPayloadDecoder {
@@ -27,7 +28,7 @@ public class SparkplugDecoder extends AbstractPayloadDecoder {
 	public String decode(byte[] payload) {
 		try {
 			PayloadDecoder<SparkplugBPayload> decoder = new SparkplugBPayloadDecoder();
-			SparkplugBPayload sparkplugPayload = decoder.buildFromByteArray(payload);
+			SparkplugBPayload sparkplugPayload = decoder.buildFromByteArray(payload, new MetricDataTypeMap());
 			return PayloadUtil.toJsonString(sparkplugPayload);
 		} catch(Exception e) {
 			return "Failed to parse the payload";
