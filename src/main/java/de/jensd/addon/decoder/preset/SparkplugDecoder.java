@@ -18,7 +18,7 @@ public class SparkplugDecoder extends AbstractPayloadDecoder {
 
 	public SparkplugDecoder() {
 		setId("sparkplug_decoder");
-		setName("Sparkplug Decoder (CirrusLink)");
+		setName("Sparkplug Decoder (Cirrus Link)");
 		setVersion("1.2.0");
 		setDescription("Decodes the binary Sparkplug payload data into a JSON representation.");
 		setContentType(ContentType.SPARKPLUG.getMimeType());

@@ -30,7 +30,7 @@ public class JsonPrettyFormatDecoder extends AbstractPayloadDecoder {
 
       public JsonPrettyFormatDecoder() {
         setId("json_pretty_format_decoder");
-        setName("JSON Pretty Fomat Decoder");
+        setName("JSON Pretty Format Decoder");
         setVersion("1.2.0");
         setDescription("Decodes JSON payload data into a readable format.");
         setContentType(ContentType.JSON.getMimeType());

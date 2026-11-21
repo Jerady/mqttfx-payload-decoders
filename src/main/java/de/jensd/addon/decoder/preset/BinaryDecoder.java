@@ -32,7 +32,7 @@ public class BinaryDecoder extends AbstractPayloadDecoder {
         setId("binary_decoder");
         setName("Binary Format Decoder");
         setVersion("1.2.0");
-        setDescription("Decodes the payload data into a binrary string.");
+        setDescription("Decodes the payload data into a binary string.");
         setContentType(ContentType.BINARY.getMimeType());
     }
 
