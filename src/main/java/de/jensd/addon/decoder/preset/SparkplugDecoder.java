@@ -17,11 +17,11 @@ import org.eclipse.tahu.util.PayloadUtil;
 public class SparkplugDecoder extends AbstractPayloadDecoder {
 
 	public SparkplugDecoder() {
-		idProperty().set("sparkplug_decoder");
-		nameProperty().set("Sparkplug Decoder (CirrusLink)");
-		versionProperty().set("1.2.0");
-		descriptionProperty().set("Decodes the binary Sparkplug payload data into a JSON representation.");
-		contentTypeProperty().set(ContentType.SPARKPLUG.getMimeType());
+		setId("sparkplug_decoder");
+		setName("Sparkplug Decoder (CirrusLink)");
+		setVersion("1.2.0");
+		setDescription("Decodes the binary Sparkplug payload data into a JSON representation.");
+		setContentType(ContentType.SPARKPLUG.getMimeType());
 	}
 
 	@Override

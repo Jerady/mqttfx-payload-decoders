@@ -17,8 +17,6 @@
 package de.jensd.addon.decoder;
 
 import de.jensd.addon.decoder.utils.ContentType;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 import java.util.Objects;
 
@@ -29,70 +27,57 @@ import java.util.Objects;
  */
 public abstract class AbstractPayloadDecoder implements PayloadDecoder, Comparable<PayloadDecoder> {
 
-    private StringProperty id;
-    private StringProperty name;
-    private StringProperty version;
-    private StringProperty description;
-    private StringProperty contentType;
-
-    public final StringProperty idProperty() {
-        if (id == null) {
-            id = new SimpleStringProperty();
-        }
-        return id;
-    }
+    // plain fields: the decoders are data, nobody observes them, and the
+    // library must not need JavaFX (MQTT.fx 6 runs without it)
+    private String id;
+    private String name;
+    private String version;
+    private String description;
+    private String contentType = ContentType.PLAIN_TEXT.getMimeType();
 
     @Override
     public String getId() {
-        return idProperty().get();
+        return id;
     }
 
-    public final StringProperty nameProperty() {
-        if (name == null) {
-            name = new SimpleStringProperty();
-        }
-        return name;
+    protected final void setId(String id) {
+        this.id = id;
     }
 
     @Override
     public String getName() {
-        return nameProperty().get();
+        return name;
     }
 
-    protected final StringProperty versionProperty() {
-        if (version == null) {
-            version = new SimpleStringProperty();
-        }
-        return version;
+    protected final void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String getVersion() {
-        return versionProperty().get();
+        return version;
     }
 
-    protected final StringProperty descriptionProperty() {
-        if (description == null) {
-            description = new SimpleStringProperty();
-        }
-        return description;
+    protected final void setVersion(String version) {
+        this.version = version;
     }
 
     @Override
     public String getDescription() {
-        return descriptionProperty().get();
+        return description;
     }
 
-    protected final StringProperty contentTypeProperty() {
-        if (contentType == null) {
-            contentType = new SimpleStringProperty(ContentType.PLAIN_TEXT.getMimeType());
-        }
-        return contentType;
+    protected final void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
     public String getContentType() {
-        return contentTypeProperty().get();
+        return contentType;
+    }
+
+    protected final void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 
     @Override

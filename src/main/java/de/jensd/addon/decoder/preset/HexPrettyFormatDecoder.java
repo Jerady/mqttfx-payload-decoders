@@ -29,11 +29,11 @@ import de.jensd.addon.decoder.utils.ContentType;
 public class HexPrettyFormatDecoder extends AbstractPayloadDecoder {
 
     public HexPrettyFormatDecoder() {
-        idProperty().set("hex_pretty_format_decoder");
-        nameProperty().set("Hex Pretty Format Decoder");
-        versionProperty().set("1.2.0");
-        descriptionProperty().set("Decodes the payload data into a hex readable formatted string.");
-        contentTypeProperty().set(ContentType.HEX.getMimeType());
+        setId("hex_pretty_format_decoder");
+        setName("Hex Pretty Format Decoder");
+        setVersion("1.2.0");
+        setDescription("Decodes the payload data into a hex readable formatted string.");
+        setContentType(ContentType.HEX.getMimeType());
     }
 
     @Override

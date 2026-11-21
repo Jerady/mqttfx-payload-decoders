@@ -29,11 +29,11 @@ import de.jensd.addon.decoder.utils.ContentType;
 public class Base64Decoder extends AbstractPayloadDecoder {
 
     public Base64Decoder() {
-        idProperty().set("base64_decoder");
-        nameProperty().set("Base64 Decoder");
-        versionProperty().set("1.2.0");
-        descriptionProperty().set("Decodes the payload data into base64 endcoding.");
-        contentTypeProperty().set(ContentType.BASE64.getMimeType());
+        setId("base64_decoder");
+        setName("Base64 Decoder");
+        setVersion("1.2.0");
+        setDescription("Decodes the payload data into base64 endcoding.");
+        setContentType(ContentType.BASE64.getMimeType());
     }
 
     @Override

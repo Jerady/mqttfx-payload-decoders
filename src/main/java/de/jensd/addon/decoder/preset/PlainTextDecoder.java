@@ -30,11 +30,11 @@ import de.jensd.addon.decoder.utils.ContentType;
 public class PlainTextDecoder extends AbstractPayloadDecoder {
 
     public PlainTextDecoder() {
-        idProperty().set("plain_text_decoder");
-        nameProperty().set("Plain Text Decoder");
-        versionProperty().set("1.2.0");
-        descriptionProperty().set("Decodes the payload data into plain text.");
-        contentTypeProperty().set(ContentType.PLAIN_TEXT.getMimeType());
+        setId("plain_text_decoder");
+        setName("Plain Text Decoder");
+        setVersion("1.2.0");
+        setDescription("Decodes the payload data into plain text.");
+        setContentType(ContentType.PLAIN_TEXT.getMimeType());
     }
 
     @Override

@@ -33,10 +33,10 @@ import org.msgpack.core.MessageUnpacker;
 public class MsgPackDecoder extends AbstractPayloadDecoder {
 
     public MsgPackDecoder() {
-        idProperty().set("msgpack_decoder");
-        nameProperty().set("Msgpack Decoder");
-        versionProperty().set("1.2.0");
-        descriptionProperty().set("Decodes the MessagePack (msgpack.org) payload data into plain text.");
+        setId("msgpack_decoder");
+        setName("Msgpack Decoder");
+        setVersion("1.2.0");
+        setDescription("Decodes the MessagePack (msgpack.org) payload data into plain text.");
     }
 
     private void unpackOne(MessageUnpacker unpacker, StringBuilder sb) throws IOException {

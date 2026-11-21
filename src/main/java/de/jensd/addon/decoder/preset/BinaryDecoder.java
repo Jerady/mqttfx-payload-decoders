@@ -29,11 +29,11 @@ import de.jensd.addon.decoder.utils.ContentType;
 public class BinaryDecoder extends AbstractPayloadDecoder {
 
     public BinaryDecoder() {
-        idProperty().set("binary_decoder");
-        nameProperty().set("Binary Format Decoder");
-        versionProperty().set("1.2.0");
-        descriptionProperty().set("Decodes the payload data into a binrary string.");
-        contentTypeProperty().set(ContentType.BINARY.getMimeType());
+        setId("binary_decoder");
+        setName("Binary Format Decoder");
+        setVersion("1.2.0");
+        setDescription("Decodes the payload data into a binrary string.");
+        setContentType(ContentType.BINARY.getMimeType());
     }
 
     @Override

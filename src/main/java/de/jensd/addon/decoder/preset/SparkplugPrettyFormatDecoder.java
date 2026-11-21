@@ -19,11 +19,11 @@ import org.eclipse.tahu.util.PayloadUtil;
 public class SparkplugPrettyFormatDecoder extends AbstractPayloadDecoder {
 
 	public SparkplugPrettyFormatDecoder() {
-		idProperty().set("sparkplug_decoder_pretty_format");
-		nameProperty().set("Sparkplug Pretty Format Decoder (Cirrus Link)");
-		versionProperty().set("1.2.0");
-		descriptionProperty().set("Decodes the binary Sparkplug payload data into a formatted JSON representation.");
-		contentTypeProperty().set(ContentType.SPARKPLUG.getMimeType());
+		setId("sparkplug_decoder_pretty_format");
+		setName("Sparkplug Pretty Format Decoder (Cirrus Link)");
+		setVersion("1.2.0");
+		setDescription("Decodes the binary Sparkplug payload data into a formatted JSON representation.");
+		setContentType(ContentType.SPARKPLUG.getMimeType());
 	}
 
 	@Override

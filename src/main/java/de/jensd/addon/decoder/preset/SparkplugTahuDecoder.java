@@ -18,11 +18,11 @@ import org.eclipse.tahu.util.PayloadUtil;
 public class SparkplugTahuDecoder extends AbstractPayloadDecoder {
 
 	public SparkplugTahuDecoder() {
-		idProperty().set("sparkplug_tahu_decoder");
-		nameProperty().set("Sparkplug Decoder (Eclipse Tahu)");
-		versionProperty().set("1.2.0");
-		descriptionProperty().set("Decodes the binary Sparkplug payload data into a JSON representation.");
-		contentTypeProperty().set(ContentType.SPARKPLUG.getMimeType());
+		setId("sparkplug_tahu_decoder");
+		setName("Sparkplug Decoder (Eclipse Tahu)");
+		setVersion("1.2.0");
+		setDescription("Decodes the binary Sparkplug payload data into a JSON representation.");
+		setContentType(ContentType.SPARKPLUG.getMimeType());
 	}
 
 	@Override

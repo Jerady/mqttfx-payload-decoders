@@ -29,11 +29,11 @@ import de.jensd.addon.decoder.utils.ContentType;
 public class JsonPrettyFormatDecoder extends AbstractPayloadDecoder {
 
       public JsonPrettyFormatDecoder() {
-        idProperty().set("json_pretty_format_decoder");
-        nameProperty().set("JSON Pretty Fomat Decoder");
-        versionProperty().set("1.2.0");
-        descriptionProperty().set("Decodes JSON payload data into a readable format.");
-        contentTypeProperty().set(ContentType.JSON.getMimeType());
+        setId("json_pretty_format_decoder");
+        setName("JSON Pretty Fomat Decoder");
+        setVersion("1.2.0");
+        setDescription("Decodes JSON payload data into a readable format.");
+        setContentType(ContentType.JSON.getMimeType());
     }
     
     @Override

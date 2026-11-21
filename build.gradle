@@ -1,7 +1,6 @@
 plugins {
     id 'java'
     id 'maven-publish'
-    id 'org.openjfx.javafxplugin' version '0.1.0'
 }
 
 apply from: 'deploy.gradle'
@@ -15,11 +14,6 @@ repositories {
 
 if (!hasProperty('mainClass')) {
     ext.mainClass = 'de.jensd.extensions.demo.App'
-}
-
-javafx {
-    version = "17"
-    modules = [ 'javafx.controls', 'javafx.base' ]
 }
 
 task javadocJar(type: Jar) {
